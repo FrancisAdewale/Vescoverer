@@ -3,13 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */; };
+		763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */; };
+		763EFF8D2552EE4200CEAA41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8C2552EE4200CEAA41 /* User.swift */; };
+		763EFF9025530CD700CEAA41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8F25530CD700CEAA41 /* ProfileViewController.swift */; };
+		763EFF94255311CE00CEAA41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF93255311CE00CEAA41 /* LoginViewController.swift */; };
 		76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5C2551DB1B001C38DE /* AppDelegate.swift */; };
 		76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5E2551DB1B001C38DE /* SceneDelegate.swift */; };
-		76912B612551DB1B001C38DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B602551DB1B001C38DE /* ViewController.swift */; };
+		76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B602551DB1B001C38DE /* HomeViewController.swift */; };
 		76912B642551DB1B001C38DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76912B622551DB1B001C38DE /* Main.storyboard */; };
 		76912B662551DB1B001C38DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76912B652551DB1B001C38DE /* Assets.xcassets */; };
 		76912B692551DB1B001C38DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76912B672551DB1B001C38DE /* LaunchScreen.storyboard */; };
@@ -17,15 +22,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ve_scoverer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		763EFF8C2552EE4200CEAA41 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		763EFF8F25530CD700CEAA41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		763EFF93255311CE00CEAA41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		76912B592551DB1B001C38DE /* Ve-scoverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ve-scoverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76912B5C2551DB1B001C38DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76912B5E2551DB1B001C38DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		76912B602551DB1B001C38DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		76912B602551DB1B001C38DE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		76912B632551DB1B001C38DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76912B652551DB1B001C38DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76912B682551DB1B001C38DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76912B6A2551DB1B001C38DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76912B752551E400001C38DE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.debug.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.debug.xcconfig"; sourceTree = "<group>"; };
+		F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.release.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B790A68FC7AF795E674182 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2658E028AB40644FFF89A8E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */,
+				F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		76912B502551DB1B001C38DE = {
 			isa = PBXGroup;
 			children = (
 				76912B5B2551DB1B001C38DE /* Ve-scoverer */,
 				76912B5A2551DB1B001C38DE /* Products */,
+				2658E028AB40644FFF89A8E3 /* Pods */,
+				01B790A68FC7AF795E674182 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,13 +91,17 @@
 			isa = PBXGroup;
 			children = (
 				76912B5C2551DB1B001C38DE /* AppDelegate.swift */,
+				763EFF8C2552EE4200CEAA41 /* User.swift */,
 				76912B5E2551DB1B001C38DE /* SceneDelegate.swift */,
-				76912B602551DB1B001C38DE /* ViewController.swift */,
+				76912B602551DB1B001C38DE /* HomeViewController.swift */,
 				76912B622551DB1B001C38DE /* Main.storyboard */,
 				76912B652551DB1B001C38DE /* Assets.xcassets */,
 				76912B752551E400001C38DE /* RegisterViewController.swift */,
+				763EFF93255311CE00CEAA41 /* LoginViewController.swift */,
+				763EFF8F25530CD700CEAA41 /* ProfileViewController.swift */,
 				76912B672551DB1B001C38DE /* LaunchScreen.storyboard */,
 				76912B6A2551DB1B001C38DE /* Info.plist */,
+				763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */,
 			);
 			path = "Ve-scoverer";
 			sourceTree = "<group>";
@@ -77,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76912B6D2551DB1B001C38DE /* Build configuration list for PBXNativeTarget "Ve-scoverer" */;
 			buildPhases = (
+				EB3887DE06FD82A1663FE24F /* [CP] Check Pods Manifest.lock */,
 				76912B552551DB1B001C38DE /* Sources */,
 				76912B562551DB1B001C38DE /* Frameworks */,
 				76912B572551DB1B001C38DE /* Resources */,
+				30B80B0F328758045E21C59A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */,
 				76912B692551DB1B001C38DE /* LaunchScreen.storyboard in Resources */,
 				76912B662551DB1B001C38DE /* Assets.xcassets in Resources */,
 				76912B642551DB1B001C38DE /* Main.storyboard in Resources */,
@@ -135,14 +174,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30B80B0F328758045E21C59A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB3887DE06FD82A1663FE24F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ve-scoverer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76912B552551DB1B001C38DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76912B612551DB1B001C38DE /* ViewController.swift in Sources */,
+				763EFF94255311CE00CEAA41 /* LoginViewController.swift in Sources */,
+				763EFF9025530CD700CEAA41 /* ProfileViewController.swift in Sources */,
+				76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */,
 				76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */,
 				76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */,
+				763EFF8D2552EE4200CEAA41 /* User.swift in Sources */,
 				76912B762551E400001C38DE /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +371,7 @@
 		};
 		76912B6E2551DB1B001C38DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -307,6 +392,7 @@
 		};
 		76912B6F2551DB1B001C38DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
