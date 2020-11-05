@@ -31,7 +31,7 @@ class RegisterViewController: UIViewController {
             if let e = error {
                 print(e)
             } else {
-                let pvc =  self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileViewController
+                let pvc =  self.storyboard?.instantiateViewController(withIdentifier: "profile") as! DashboardTabController
                 pvc.modalPresentationStyle = .fullScreen
                 self.present(pvc, animated: true, completion: nil)            }
         }
@@ -43,6 +43,6 @@ class RegisterViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.
+        //segue.destination = Login
     }
 }

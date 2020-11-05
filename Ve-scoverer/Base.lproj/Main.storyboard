@@ -24,14 +24,6 @@
                                 <rect key="frame" x="249" y="386" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5E-4P-hUE">
-                                <rect key="frame" x="177" y="468" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="donePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzi-hV-NqR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm you are vegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thh-Xx-Mvb">
                                 <rect key="frame" x="44" y="391" width="172" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,6 +31,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5E-4P-hUE">
+                                <rect key="frame" x="124" y="461" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="Jef-RC-BYH" kind="show" identifier="goToRegister" id="XHF-QB-tH1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,7 +103,7 @@
                                     <barButtonItem title="Log In" id="PNB-o0-Isr">
                                         <connections>
                                             <action selector="loginPressed:" destination="Jef-RC-BYH" id="uRG-Fc-Mg2"/>
-                                            <segue destination="mVs-Z4-dJZ" kind="show" id="gQ4-jT-feR"/>
+                                            <segue destination="mVs-Z4-dJZ" kind="show" id="sRL-mT-Bro"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -114,6 +114,7 @@
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="donePressed:" destination="Jef-RC-BYH" eventType="touchUpInside" id="rnS-MC-Y6X"/>
+                                    <segue destination="paf-GN-kaX" kind="show" id="CjO-wC-Rxy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,14 +130,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DU9-xr-X2V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="-632"/>
+            <point key="canvasLocation" x="2364" y="-641"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="54p-0w-Xtw">
             <objects>
                 <viewController id="mVs-Z4-dJZ" customClass="LoginViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AMU-hP-VFf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1K-Bf-5tu">
@@ -155,6 +156,9 @@
                                 <rect key="frame" x="125" y="407" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log in"/>
+                                <connections>
+                                    <segue destination="paf-GN-kaX" kind="show" id="YOp-wn-sfB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ok3-1a-VmZ"/>
@@ -164,40 +168,122 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoa-IF-zNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="527"/>
+            <point key="canvasLocation" x="2363" y="510"/>
         </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="dWO-vk-wFC">
+        <!--Found-->
+        <scene sceneID="ps2-pt-Xdd">
             <objects>
-                <viewController storyboardIdentifier="profile" id="CxO-N1-eZO" customClass="ProfileViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="emV-ap-gHN">
+                <viewController id="r7l-la-LNl" customClass="FoundViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uip-0I-ubp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wH5-g8-P0u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Found" image="folder.fill" catalog="system" selectedImage="folder.fill" id="4Ts-vF-I8X"/>
+                    <connections>
+                        <outlet property="profileTab" destination="4Ts-vF-I8X" id="9E2-fs-fNQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mi0-2Z-5pU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4239" y="302"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="DPj-ba-NUF">
+            <objects>
+                <viewController id="geu-5S-loU" customClass="DiscoverViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mhI-vd-zyy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BPA-Cb-8UR">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Locate" image="location" catalog="system" id="NYY-Ji-AjW"/>
-                                    <tabBarItem title="Friends" image="bookmark" catalog="system" id="eLY-fs-Ffa"/>
-                                    <tabBarItem title="Verfiry" image="checkmark.shield" catalog="system" id="QvV-CG-LRt"/>
-                                    <tabBarItem title="Profile" image="person.fill" catalog="system" id="0gD-Qn-eoN"/>
-                                </items>
-                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K8-h9-QR3">
+                                <rect key="frame" x="129" y="106" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="B1C-DW-Lzd"/>
+                        <viewLayoutGuide key="safeArea" id="1xJ-qs-FrR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Discover" image="location" catalog="system" selectedImage="location" id="Jyf-Ba-6uu"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RyV-FN-Cdl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4Y-hB-Hu6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3101" y="91"/>
+            <point key="canvasLocation" x="4238" y="1336"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Nle-8z-AYo">
+            <objects>
+                <viewController id="emy-kP-vjH" customClass="ProfileViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gdQ-Wf-9wK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57s-4s-wgl">
+                                <rect key="frame" x="128" y="88" width="49" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yyA-gv-Doq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="65g-A0-JIP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vPB-Qp-OZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4239.375" y="-367.6056338028169"/>
+        </scene>
+        <!--Verify-->
+        <scene sceneID="QMW-4b-Qy1">
+            <objects>
+                <viewController id="HAz-Iu-oEn" customClass="VerifyViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aus-2b-180">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="K7y-7c-8j7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Verify" image="checkmark" catalog="system" selectedImage="checkmark" id="UEI-df-C3L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZPS-JS-V43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4238" y="-1075"/>
+        </scene>
+        <!--Dashboard Tab Controller-->
+        <scene sceneID="Hbp-2N-VWv">
+            <objects>
+                <tabBarController id="paf-GN-kaX" customClass="DashboardTabController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2GS-id-ieg"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zx0-zZ-lqm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <outlet property="dashboardTab" destination="Zx0-zZ-lqm" id="bw8-nv-jA7"/>
+                        <segue destination="emy-kP-vjH" kind="relationship" relationship="viewControllers" id="Q3z-K1-PeP"/>
+                        <segue destination="r7l-la-LNl" kind="relationship" relationship="viewControllers" id="KrD-1U-vKD"/>
+                        <segue destination="HAz-Iu-oEn" kind="relationship" relationship="viewControllers" id="Hns-Sn-koT"/>
+                        <segue destination="geu-5S-loU" kind="relationship" relationship="viewControllers" id="3b7-A6-Dmu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdc-2C-oGn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3336" y="-64"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YOp-wn-sfB"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="checkmark.shield" catalog="system" width="128" height="118"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="location" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">

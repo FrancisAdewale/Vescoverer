@@ -18,14 +18,12 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBAction func donePressed(_ sender: UIButton) {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
-        if isVegan.isOn ==  true {
-            let rvc =  storyboard?.instantiateViewController(withIdentifier: "register") as! RegisterViewController
-            rvc.modalPresentationStyle = .fullScreen
-            self.present(rvc, animated: true, completion: nil)
+        if isVegan.isOn {
+            return true
         }
-        
+        return false
     }
 }
 
