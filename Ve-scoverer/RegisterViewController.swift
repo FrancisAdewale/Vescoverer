@@ -24,25 +24,25 @@ class RegisterViewController: UIViewController {
     
     // rename function name
     @IBAction func donePressed(_ sender: UIButton) {
-        let identifier = UUID()
-        let user = User(id: identifier, email: emailTextField.text!, password: passwordTextField.text!, age: ageTextField.text!)
+        let user = User(email: emailTextField.text!, password: passwordTextField.text!)
         
         Auth.auth().createUser(withEmail: user.email, password: user.password) { (result, error) in
             if let e = error {
                 print(e)
             } else {
-                let pvc =  self.storyboard?.instantiateViewController(withIdentifier: "profile") as! DashboardTabController
-                pvc.modalPresentationStyle = .fullScreen
-                self.present(pvc, animated: true, completion: nil)            }
+                let dvc =  self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardTabController
+                dvc.modalPresentationStyle = .fullScreen
+                self.present(dvc, animated: true, completion: nil)
+                
+            }
         }
     }
     
     
     @IBAction func loginPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goToLogin", sender: self)
+        
+        self.performSegue(withIdentifier: "goToLogin", sender: self)
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //segue.destination = Login
-    }
 }
