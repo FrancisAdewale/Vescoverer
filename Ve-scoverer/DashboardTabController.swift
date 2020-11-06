@@ -11,16 +11,11 @@ class DashboardTabController: UITabBarController {
     
     @IBOutlet weak var dashboardTab: UITabBar!
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationItem.hidesBackButton = true
-        
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        title = "Ve-scoverer"
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

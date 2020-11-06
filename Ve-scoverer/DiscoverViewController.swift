@@ -10,35 +10,41 @@ import MapKit
 import CoreLocation
 
 class DiscoverViewController: UIViewController {
+    //MARK: - Properties
+    let fvc = FoundTableViewController()
     
+    var users = [CLLocationCoordinate2D]()
     var longitude = CLLocationDegrees()
     var latitude = CLLocationDegrees()
-    @IBOutlet weak var nearbyUsers: MKMapView!
+    private let locationManager = CLLocationManager()
     
-    let locationManager = CLLocationManager()
+    
+    
+    @IBOutlet weak private var nearbyUsers: MKMapView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nearbyUsers.delegate = self
-        
-        
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            locationManager.desiredAccuracy = kCLLocationAccuracyReduced
             locationManager.startUpdatingLocation()
         }
-
+        
     }
 }
 
+//MARK: - CoreLocation Methods
 extension DiscoverViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
+        print("this is location \(location)")
         let annotation = MKPointAnnotation()
         
         latitude = location!.coordinate.latitude
@@ -49,6 +55,7 @@ extension DiscoverViewController: CLLocationManagerDelegate {
         annotation.coordinate = center
         annotation.title = "User"
         
+        
         self.nearbyUsers.setRegion(region, animated: true)
         nearbyUsers.addAnnotation(annotation)
         self.locationManager.stopUpdatingLocation()
@@ -57,8 +64,10 @@ extension DiscoverViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
-
+    
 }
+
+//MARK: - MapKit Methods
 
 extension DiscoverViewController: MKMapViewDelegate {
     
@@ -76,10 +85,27 @@ extension DiscoverViewController: MKMapViewDelegate {
         } else {
             annotationView!.annotation = annotation
         }
-
+        
         return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let alert = UIAlertController(title: "View User", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            if let loc = view.annotation?.coordinate {
+                self.fvc.userArray.append(loc)
+                print(self.fvc.userArray)
+            }
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
+    }
     
 }
 
