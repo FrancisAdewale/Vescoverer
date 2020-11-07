@@ -7,7 +7,6 @@ target 'Ve-scoverer' do
   # Pods for Ve-scoverer
 
 pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
-
+pod 'FirebaseFirestoreSwift'
 
 end

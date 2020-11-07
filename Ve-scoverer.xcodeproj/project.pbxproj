@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */; };
 		762503212555D8DB002F92E2 /* FoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762503202555D8DB002F92E2 /* FoundTableViewController.swift */; };
+		7625033C25570169002F92E2 /* UserCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7625033A25570169002F92E2 /* UserCore.xcdatamodeld */; };
 		763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */; };
 		763EFF8D2552EE4200CEAA41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8C2552EE4200CEAA41 /* User.swift */; };
 		763EFF9025530CD700CEAA41 /* DashboardTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8F25530CD700CEAA41 /* DashboardTabController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ve_scoverer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762503202555D8DB002F92E2 /* FoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundTableViewController.swift; sourceTree = "<group>"; };
+		7625033B25570169002F92E2 /* UserCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCore.xcdatamodel; sourceTree = "<group>"; };
 		763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		763EFF8C2552EE4200CEAA41 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		763EFF8F25530CD700CEAA41 /* DashboardTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				763EFFA12554573D00CEAA41 /* VerifyViewController.swift */,
 				763EFFA4255457C000CEAA41 /* ProfileViewController.swift */,
 				762503202555D8DB002F92E2 /* FoundTableViewController.swift */,
+				7625033A25570169002F92E2 /* UserCore.xcdatamodeld */,
 			);
 			path = "Ve-scoverer";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				762503212555D8DB002F92E2 /* FoundTableViewController.swift in Sources */,
+				7625033C25570169002F92E2 /* UserCore.xcdatamodeld in Sources */,
 				763EFF94255311CE00CEAA41 /* LoginViewController.swift in Sources */,
 				763EFF9025530CD700CEAA41 /* DashboardTabController.swift in Sources */,
 				76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */,
@@ -449,6 +453,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7625033A25570169002F92E2 /* UserCore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7625033B25570169002F92E2 /* UserCore.xcdatamodel */,
+			);
+			currentVersion = 7625033B25570169002F92E2 /* UserCore.xcdatamodel */;
+			path = UserCore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 76912B512551DB1B001C38DE /* Project object */;
 }

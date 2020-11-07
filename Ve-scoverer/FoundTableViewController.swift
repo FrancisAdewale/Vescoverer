@@ -11,14 +11,23 @@ import CoreLocation
 
 class FoundTableViewController: UITableViewController {
     
+    var coordinate = CLLocationCoordinate2D() //+37.76578140,-122.40755380
+    
+    
+    
     var userArray = [CLLocationCoordinate2D]()
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        coordinate.latitude = 37.76578140
+        coordinate.longitude = 122.48755388
         
-        print(" This is FVC \(userArray)")
+        userArray.append(coordinate)
+        userArray.append(coordinate)
+        userArray.append(coordinate)
+
     }
 
     // MARK: - Table view data source

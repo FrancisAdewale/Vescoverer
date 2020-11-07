@@ -16,10 +16,12 @@ class DashboardTabController: UITabBarController {
         super.viewDidLoad()
         
         title = "Ve-scoverer"
+        
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print(tabBar.selectedItem)
+        
+        
     }
     
     

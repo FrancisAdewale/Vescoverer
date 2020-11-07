@@ -127,7 +127,7 @@
         <!--Login View Controller-->
         <scene sceneID="54p-0w-Xtw">
             <objects>
-                <viewController id="mVs-Z4-dJZ" customClass="LoginViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="mVs-Z4-dJZ" customClass="LoginViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AMU-hP-VFf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +273,7 @@
                         <segue destination="emy-kP-vjH" kind="relationship" relationship="viewControllers" id="Q3z-K1-PeP"/>
                         <segue destination="HAz-Iu-oEn" kind="relationship" relationship="viewControllers" id="Hns-Sn-koT"/>
                         <segue destination="geu-5S-loU" kind="relationship" relationship="viewControllers" id="3b7-A6-Dmu"/>
-                        <segue destination="rYg-8Z-ZJO" kind="relationship" relationship="viewControllers" id="SRc-uV-EkK"/>
+                        <segue destination="rYg-8Z-ZJO" kind="relationship" relationship="viewControllers" destinationCreationSelector="goToFound" id="SRc-uV-EkK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdc-2C-oGn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

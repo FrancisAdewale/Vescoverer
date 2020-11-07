@@ -11,9 +11,7 @@ import CoreLocation
 
 class DiscoverViewController: UIViewController {
     //MARK: - Properties
-    let fvc = FoundTableViewController()
     
-    var users = [CLLocationCoordinate2D]()
     var longitude = CLLocationDegrees()
     var latitude = CLLocationDegrees()
     private let locationManager = CLLocationManager()
@@ -95,14 +93,14 @@ extension DiscoverViewController: MKMapViewDelegate {
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             if let loc = view.annotation?.coordinate {
-                self.fvc.userArray.append(loc)
-                print(self.fvc.userArray)
+                print(loc)
             }
         }
         
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+        
         
         
     }

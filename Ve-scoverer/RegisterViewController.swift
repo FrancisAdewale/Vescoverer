@@ -10,6 +10,8 @@ import Firebase
 
 class RegisterViewController: UIViewController {
     
+    let db = Firestore.firestore()
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField! //UIPICKER for age instead
@@ -24,6 +26,7 @@ class RegisterViewController: UIViewController {
     
     // rename function name
     @IBAction func donePressed(_ sender: UIButton) {
+        
         let user = User(email: emailTextField.text!, password: passwordTextField.text!)
         
         Auth.auth().createUser(withEmail: user.email, password: user.password) { (result, error) in
