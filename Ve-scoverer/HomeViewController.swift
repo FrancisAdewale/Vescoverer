@@ -27,10 +27,10 @@ class HomeViewController: UIViewController {
         
         let lvc = storyboard?.instantiateViewController(withIdentifier: "Login")
         
-        if vegan.count > 0 {
+        if !vegan.isEmpty {
             lvc!.modalPresentationStyle = .fullScreen
             present(lvc!, animated: true, completion: nil)
-        }
+        } 
     }
     
     

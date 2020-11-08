@@ -7,10 +7,14 @@
 
 import UIKit
 import Firebase
+import CoreData
+import CoreLocation
 
 class RegisterViewController: UIViewController {
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     let db = Firestore.firestore()
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -24,8 +28,11 @@ class RegisterViewController: UIViewController {
         navigationItem.hidesBackButton = true
     }
     
+
+    
     // rename function name
     @IBAction func donePressed(_ sender: UIButton) {
+        
         
         let user = User(email: emailTextField.text!, password: passwordTextField.text!)
         
@@ -33,6 +40,7 @@ class RegisterViewController: UIViewController {
             if let e = error {
                 print(e)
             } else {
+                
                 let dvc =  self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardTabController
                 dvc.modalPresentationStyle = .fullScreen
                 self.present(dvc, animated: true, completion: nil)

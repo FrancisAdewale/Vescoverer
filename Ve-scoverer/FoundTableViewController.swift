@@ -21,12 +21,12 @@ class FoundTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinate.latitude = 37.76578140
-        coordinate.longitude = 122.48755388
-        
-        userArray.append(coordinate)
-        userArray.append(coordinate)
-        userArray.append(coordinate)
+//        coordinate.latitude = 37.76578140
+//        coordinate.longitude = 122.48755388
+//
+//        userArray.append(coordinate)
+//        userArray.append(coordinate)
+//        userArray.append(coordinate)
 
     }
 

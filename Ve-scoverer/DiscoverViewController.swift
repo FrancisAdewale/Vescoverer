@@ -42,7 +42,6 @@ extension DiscoverViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        print("this is location \(location)")
         let annotation = MKPointAnnotation()
         
         latitude = location!.coordinate.latitude
@@ -100,9 +99,7 @@ extension DiscoverViewController: MKMapViewDelegate {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
-        
-        
-        
+                
     }
     
 }
