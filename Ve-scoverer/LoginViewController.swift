@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                     var ref: DocumentReference? = nil
                     ref = self.db.collection("users").addDocument(data: [
                         "longitude": geoLocation.longitude,
-                        "latitude": geoLocation.latitude,
+                        "latitude": geoLocation.latitude
                     ]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
@@ -79,12 +79,18 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                         }
                     }
                     
-                    
-                   
-                    
-                            
+                    ref = self.db.collection("users").addDocument(data: [
+                        "longitude": -0.320119,
+                        "latitude": 51.602938
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                        }
+                    }
                     self.present(dvc, animated: true, completion: nil)
-                    
+
                 }
             }
         }
@@ -111,4 +117,5 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
 //
 //    }
 }
+
 

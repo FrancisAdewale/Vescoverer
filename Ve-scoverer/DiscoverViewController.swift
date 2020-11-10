@@ -8,22 +8,45 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class DiscoverViewController: UIViewController {
     //MARK: - Properties
-    
+    let startingLocation = CLLocation(latitude: 37.773972, longitude: -122.431297)
     var longitude = CLLocationDegrees()
     var latitude = CLLocationDegrees()
     private let locationManager = CLLocationManager()
-    
+    let radius: CLLocationDistance = 500
+    var annoationsArray = [MKPointAnnotation]()
+    let db = Firestore.firestore()
+
     
     
     @IBOutlet weak private var nearbyUsers: MKMapView!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+//        db.collection("users").getDocuments() {(querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//
+//
+//                    //self.nearbyUsers.showAnnotations(self.annoationsArray, animated: true)
+//                }
+//            }
+//        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setStartingPosition()
+        let geo = getGeoLocation()
+        setAnnotation(geoPoint: geo)
+    
         nearbyUsers.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -35,27 +58,56 @@ class DiscoverViewController: UIViewController {
         }
         
     }
+    
+    func getGeoLocation() -> [GeoPoint]{
+            return [
+                GeoPoint(latitude: 37.788666, longitude: -123.107540),
+                GeoPoint(latitude: 37.788300, longitude: -122.407570),
+                GeoPoint(latitude: 37.788999, longitude: -122.507570),
+                GeoPoint(latitude: 37.788133, longitude: -122.404470)
+            ]
+        }
+    
+    func setAnnotation(geoPoint:[GeoPoint]){
+            
+            for point in geoPoint {
+                let annotation = MKPointAnnotation()
+                //annotation.title = store.name
+                
+                
+                annotation.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+                nearbyUsers.addAnnotation(annotation)
+                annoationsArray.append(annotation)
+                nearbyUsers.showAnnotations(annoationsArray, animated: true)
+            }
+    }
+    
+    func setStartingPosition(){
+            
+        let position =  MKCoordinateRegion(center: startingLocation.coordinate,
+                                               latitudinalMeters: radius,
+                                               longitudinalMeters: radius)
+        
+        nearbyUsers.setRegion(position, animated: true)
+    }
 }
 
 //MARK: - CoreLocation Methods
 extension DiscoverViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let annotation = MKPointAnnotation()
+
         
-        latitude = location!.coordinate.latitude
-        longitude = location!.coordinate.longitude
-        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-        
-        annotation.coordinate = center
-        annotation.title = "User"
-        
-        
-        self.nearbyUsers.setRegion(region, animated: true)
-        nearbyUsers.addAnnotation(annotation)
         self.locationManager.stopUpdatingLocation()
+        
+        var insertion = MKPointAnnotation()
+        
+        insertion.coordinate.longitude = (locations.last?.coordinate.longitude)!
+        insertion.coordinate.latitude = (locations.last?.coordinate.latitude)!
+        
+        annoationsArray.append(insertion)
+        nearbyUsers.showAnnotations(annoationsArray, animated: true)
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -67,24 +119,7 @@ extension DiscoverViewController: CLLocationManagerDelegate {
 //MARK: - MapKit Methods
 
 extension DiscoverViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard annotation is MKPointAnnotation else {
-            return nil
-        }
-        let identifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView!.canShowCallout = true
-        } else {
-            annotationView!.annotation = annotation
-        }
-        
-        return annotationView
-    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
@@ -92,7 +127,7 @@ extension DiscoverViewController: MKMapViewDelegate {
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             if let loc = view.annotation?.coordinate {
-                print(loc)
+                print("This is loc: \(loc)")
             }
         }
         
@@ -102,5 +137,5 @@ extension DiscoverViewController: MKMapViewDelegate {
                 
     }
     
-}
 
+}
