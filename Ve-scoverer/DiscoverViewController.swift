@@ -79,6 +79,7 @@ class DiscoverViewController: UIViewController {
                 nearbyUsers.addAnnotation(annotation)
                 annoationsArray.append(annotation)
                 nearbyUsers.showAnnotations(annoationsArray, animated: true)
+                
             }
     }
     
@@ -100,14 +101,13 @@ extension DiscoverViewController: CLLocationManagerDelegate {
         
         self.locationManager.stopUpdatingLocation()
         
-        var insertion = MKPointAnnotation()
-        
-        insertion.coordinate.longitude = (locations.last?.coordinate.longitude)!
-        insertion.coordinate.latitude = (locations.last?.coordinate.latitude)!
-        
-        annoationsArray.append(insertion)
-        nearbyUsers.showAnnotations(annoationsArray, animated: true)
-        
+//        var insertion = MKPointAnnotation()
+//
+//        insertion.coordinate.longitude = (locations.last?.coordinate.longitude)!
+//        insertion.coordinate.latitude = (locations.last?.coordinate.latitude)!
+//
+//        annoationsArray.append(insertion)
+//
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
