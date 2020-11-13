@@ -13,39 +13,21 @@ import Firebase
 class DiscoverViewController: UIViewController {
     //MARK: - Properties
     let startingLocation = CLLocation(latitude: 37.773972, longitude: -122.431297)
-    var longitude = CLLocationDegrees()
-    var latitude = CLLocationDegrees()
     private let locationManager = CLLocationManager()
-    let radius: CLLocationDistance = 500
+    let radius: CLLocationDistance = 1000
     var annoationsArray = [MKPointAnnotation]()
     let db = Firestore.firestore()
+    
+    var geoPoints = [GeoPoint]()
 
-    
-    
+
     @IBOutlet weak private var nearbyUsers: MKMapView!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-//        db.collection("users").getDocuments() {(querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//
-//
-//                    //self.nearbyUsers.showAnnotations(self.annoationsArray, animated: true)
-//                }
-//            }
-//        }
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setStartingPosition()
-        let geo = getGeoLocation()
-        setAnnotation(geoPoint: geo)
+        getGeoLocation()
     
         nearbyUsers.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -59,23 +41,43 @@ class DiscoverViewController: UIViewController {
         
     }
     
-    func getGeoLocation() -> [GeoPoint]{
-            return [
-                GeoPoint(latitude: 37.788666, longitude: -123.107540),
-                GeoPoint(latitude: 37.788300, longitude: -122.407570),
-                GeoPoint(latitude: 37.788999, longitude: -122.507570),
-                GeoPoint(latitude: 37.788133, longitude: -122.404470)
-            ]
+    func getGeoLocation(){
+
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+
+                for document in querySnapshot!.documents {
+                    
+                    let data = document.data()
+                    let latitude = data["latitude"] as! Double
+                    let longitude = data["longitude"] as! Double
+                    
+                        let annotation = MKPointAnnotation()
+                        //annotation.title = store.name
+                        
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    self.nearbyUsers.addAnnotation(annotation)
+                    self.annoationsArray.append(annotation)
+                    self.nearbyUsers.showAnnotations(self.annoationsArray, animated: true)
+                            
+                        }
+
+                }
+            }
+
         }
+
     
     func setAnnotation(geoPoint:[GeoPoint]){
+        
+        for point in geoPoint {
+            let annotation = MKPointAnnotation()
+            //annotation.title = store.name
             
-            for point in geoPoint {
-                let annotation = MKPointAnnotation()
-                //annotation.title = store.name
-                
-                
-                annotation.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+            
+            annotation.coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
                 nearbyUsers.addAnnotation(annotation)
                 annoationsArray.append(annotation)
                 nearbyUsers.showAnnotations(annoationsArray, animated: true)
@@ -136,6 +138,7 @@ extension DiscoverViewController: MKMapViewDelegate {
         present(alert, animated: true, completion: nil)
                 
     }
+    
     
 
 }

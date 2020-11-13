@@ -64,13 +64,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                     print(e)
                 } else {
                     
-                    let geoLocation = GeoPoint(latitude: Double(self.location.coordinate.latitude), longitude: Double(self.location.coordinate.longitude))
 
                     
                     var ref: DocumentReference? = nil
                     ref = self.db.collection("users").addDocument(data: [
-                        "longitude": geoLocation.longitude,
-                        "latitude": geoLocation.latitude
+                        "longitude": Double(self.location.coordinate.longitude),
+                        "latitude": Double(self.location.coordinate.latitude)
                     ]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
@@ -80,8 +79,8 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                     }
                     
                     ref = self.db.collection("users").addDocument(data: [
-                        "longitude": -0.320119,
-                        "latitude": 51.602938
+                        "longitude":-122.21108,
+                        "latitude": 37.620
                     ]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
@@ -89,6 +88,18 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                             print("Document added with ID: \(ref!.documentID)")
                         }
                     }
+                    
+                    ref = self.db.collection("users").addDocument(data: [
+                        "longitude": -122.20459,
+                        "latitude":37.500
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                        }
+                    }
+                    
                     self.present(dvc, animated: true, completion: nil)
 
                 }
