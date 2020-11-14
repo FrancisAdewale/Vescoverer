@@ -8,6 +8,7 @@ target 'Ve-scoverer' do
 
 pod 'Firebase/Auth'
 pod 'FirebaseFirestoreSwift'
+pod 'FasterVerificationCode'
 
 
 end

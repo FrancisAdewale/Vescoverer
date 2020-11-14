@@ -17,7 +17,6 @@
 		763EFF9B2554558900CEAA41 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF9A2554558900CEAA41 /* DiscoverViewController.swift */; };
 		763EFFA22554573D00CEAA41 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFFA12554573D00CEAA41 /* VerifyViewController.swift */; };
 		763EFFA5255457C000CEAA41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFFA4255457C000CEAA41 /* ProfileViewController.swift */; };
-		76484F65255B043B00DEBF4D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484F64255B043B00DEBF4D /* Store.swift */; };
 		76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5C2551DB1B001C38DE /* AppDelegate.swift */; };
 		76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5E2551DB1B001C38DE /* SceneDelegate.swift */; };
 		76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B602551DB1B001C38DE /* HomeViewController.swift */; };
@@ -38,7 +37,6 @@
 		763EFF9A2554558900CEAA41 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		763EFFA12554573D00CEAA41 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		763EFFA4255457C000CEAA41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		76484F64255B043B00DEBF4D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		76912B592551DB1B001C38DE /* Ve-scoverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ve-scoverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76912B5C2551DB1B001C38DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76912B5E2551DB1B001C38DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				763EFFA4255457C000CEAA41 /* ProfileViewController.swift */,
 				762503202555D8DB002F92E2 /* FoundTableViewController.swift */,
 				7625033A25570169002F92E2 /* UserCore.xcdatamodeld */,
-				76484F64255B043B00DEBF4D /* Store.swift */,
 			);
 			path = "Ve-scoverer";
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */,
 				763EFFA22554573D00CEAA41 /* VerifyViewController.swift in Sources */,
 				76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */,
-				76484F65255B043B00DEBF4D /* Store.swift in Sources */,
 				76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */,
 				763EFFA5255457C000CEAA41 /* ProfileViewController.swift in Sources */,
 				763EFF9B2554558900CEAA41 /* DiscoverViewController.swift in Sources */,

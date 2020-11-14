@@ -9,57 +9,160 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var editedInstagram = String()
+    var editedTwitter = String()
+    var editedFacebook = String()
+
+    @IBOutlet weak var isVerified: UIImageView!
+    
+    @IBOutlet weak var uploadImage: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
-//    @IBAction func igButtonClick(_ sender: Any)
-//    {
-//            let appURL = URL(string: "instagram://user?username=yourUSERNAME")!
-//            let application = UIApplication.shared
-//
-//            if application.canOpenURL(appURL)
-//            {
-//                application.open(appURL)
-//            }
-//            else
-//            {
-//                let webURL = URL(string: "https://instagram.com/yourUSERNAME")!
-//                application.open(webURL)
-//            }
-//    }
+    @IBAction func igButtonClick(_ sender: Any) {
+        
+        var textField = UITextField()
+        
+        let actionsheet = UIAlertController(title: "Select", message: "", preferredStyle: .actionSheet)
+        
+        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
+            
+            let appURL = URL(string: "instagram://user?username=\(self.editedInstagram)")!
+            let application = UIApplication.shared
+            
+            if application.canOpenURL(appURL) {
+                application.open(appURL)
+            } else {
+                let webURL = URL(string: "https://instagram.com/\(self.editedInstagram)")!
+                application.open(webURL)
+            }
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+            
+            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Edit", style: .default) { (action) in
+                self.editedInstagram = textField.text!
+                
+            }
+            alert.addTextField { (alertTextField) in
+                textField = alertTextField
+                
+            }
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        actionsheet.addAction(goAction)
+        actionsheet.addAction(editAction)
+        
+        present(actionsheet, animated: true, completion: nil)
+    }
     
-//
-//    @IBAction func twitterButtonClicked(_ sender: Any)
-//    {
-//        let appURL = URL(string: "twitter://user?screen_name=yourUSERNAME")!
-//        let application = UIApplication.shared
-//
-//        if application.canOpenURL(appURL)
-//        {
-//            application.open(appURL)
-//        }
-//        else
-//        {
-//            let webURL = URL(string: "https://twitter.com/yourUSERNAME")!
-//            application.open(webURL)
-//        }
-//    }
-//
     
-//    @IBAction func fbButtonClick(_ sender: Any)
-//    {
-//        let appURL = URL(string: "fb://profile/yourUSERNAME")!
-//        let application = UIApplication.shared
-//
-//        if application.canOpenURL(appURL)
-//        {
-//            application.open(appURL)
-//        }
-//        else
-//        {
-//            let webURL = URL(string: "https://www.facebook.com/yourUSERNAME")!
-//            application.open(webURL)
-//        }
-//    }
+    @IBAction func twitterButtonClicked(_ sender: Any) {
+        
+        var textField = UITextField()
+        
+        let actionsheet = UIAlertController(title: "Select", message: "", preferredStyle: .actionSheet)
+        
+        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
+            
+            let appURL = URL(string: "twitter://user?screen_name=\(self.editedTwitter)")!
+            let application = UIApplication.shared
+            
+            if application.canOpenURL(appURL) {
+                application.open(appURL)
+            } else{
+                let webURL = URL(string: "https://twitter.com/\(self.editedTwitter)")!
+                application.open(webURL)
+            }
+            
+         
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+            
+            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Edit", style: .default) { (action) in
+                self.editedTwitter = textField.text!
+                
+            }
+            alert.addTextField { (alertTextField) in
+                textField = alertTextField
+                
+            }
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        actionsheet.addAction(goAction)
+        actionsheet.addAction(editAction)
+        
+        present(actionsheet, animated: true, completion: nil)
+        
+    
+    }
+    
+    @IBAction func fbButtonClick(_ sender: Any) {
+        
+        var textField = UITextField()
+        
+        let actionsheet = UIAlertController(title: "Select", message: "", preferredStyle: .actionSheet)
+        
+        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
+            
+            let appURL = URL(string: "fb://profile/\(self.editedFacebook)")!
+            let application = UIApplication.shared
+            
+            if application.canOpenURL(appURL) {
+                application.open(appURL)
+            }else{
+                let webURL = URL(string: "https://www.facebook.com/\(self.editedFacebook)")!
+                application.open(webURL)
+            }
+            
+         
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+            
+            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Edit", style: .default) { (action) in
+                self.editedFacebook = textField.text!
+                
+            }
+            alert.addTextField { (alertTextField) in
+                textField = alertTextField
+                
+            }
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        actionsheet.addAction(goAction)
+        actionsheet.addAction(editAction)
+        
+        present(actionsheet, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    
 }
