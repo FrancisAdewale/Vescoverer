@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var editedInstagram = String()
     var editedTwitter = String()
@@ -20,6 +23,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     @IBOutlet weak var uploadImage: UIButton!
     
     override func viewDidLoad() {
+        
+        load()
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         super.viewDidLoad()
         picker.delegate = self
         picker.allowsEditing = true
@@ -33,6 +40,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let userImage = info[.editedImage] as! UIImage
+        let pngImage = userImage.pngData()
+        let coreImage = Image(context: context)
+        coreImage.img = pngImage
+        
+        do {
+            try! context.save()
+        } 
+        
         uploadImage.setImage(userImage, for: .normal)
         dismiss(animated: true, completion: nil)
     }
@@ -170,6 +185,22 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
         present(actionsheet, animated: true, completion: nil)
         
+    }
+    
+    func load() {
+        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
+        
+        do {
+            let result = try? context.fetch(fetchRequest)
+            let image = result?.first?.img
+            if let image = image {
+                let imageButton = UIImage(data: image)
+                uploadImage.setImage(imageButton, for: .normal)
+            }
+            
+        } catch {
+            print(error)
+        }
     }
     
 }
