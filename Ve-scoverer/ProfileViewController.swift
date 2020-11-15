@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     var editedInstagram = String()
     var editedTwitter = String()
     var editedFacebook = String()
+    
+    let picker = UIImagePickerController()
 
     @IBOutlet weak var isVerified: UIImageView!
     
@@ -19,8 +21,22 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
         
     }
+    
+    @IBAction func uploadImagePressed(_ sender: UIButton) {
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let userImage = info[.editedImage] as! UIImage
+        uploadImage.setImage(userImage, for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func igButtonClick(_ sender: Any) {
         
@@ -154,15 +170,6 @@ class ProfileViewController: UIViewController {
         
         present(actionsheet, animated: true, completion: nil)
         
-        
     }
-    
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
-    
     
 }
