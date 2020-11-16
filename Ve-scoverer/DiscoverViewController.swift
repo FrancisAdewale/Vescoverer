@@ -17,8 +17,8 @@ class DiscoverViewController: UIViewController {
     let radius: CLLocationDistance = 1000
     var annoationsArray = [MKPointAnnotation]()
     let db = Firestore.firestore()
-    
     var geoPoints = [GeoPoint]()
+    var userEmail: String = ""
 
 
     @IBOutlet weak private var nearbyUsers: MKMapView!
@@ -42,26 +42,27 @@ class DiscoverViewController: UIViewController {
     }
     
     func getGeoLocation(){
-
+        
         db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-
+                
                 for document in querySnapshot!.documents {
                     
+                    print(document.documentID)
                     let data = document.data()
                     let latitude = data["latitude"] as! Double
                     let longitude = data["longitude"] as! Double
                     
-                        let annotation = MKPointAnnotation()
-                        //annotation.title = store.name
-                        
-                        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    let annotation = MKPointAnnotation()
+                    annotation.title = document.documentID
+                    
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     self.nearbyUsers.addAnnotation(annotation)
                     self.annoationsArray.append(annotation)
                     self.nearbyUsers.showAnnotations(self.annoationsArray, animated: true)
-                            
+                    
                         }
 
                 }
@@ -121,6 +122,8 @@ extension DiscoverViewController: CLLocationManagerDelegate {
 //MARK: - MapKit Methods
 
 extension DiscoverViewController: MKMapViewDelegate {
+    
+
         
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

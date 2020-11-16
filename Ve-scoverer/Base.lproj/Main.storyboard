@@ -270,20 +270,10 @@
                     <view key="view" contentMode="scaleToFill" id="aus-2b-180">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsA-8L-xpZ">
-                                <rect key="frame" x="49" y="127" width="239" height="231"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="K7y-7c-8j7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Verify" image="checkmark" catalog="system" selectedImage="checkmark" id="UEI-df-C3L"/>
-                    <connections>
-                        <outlet property="verificationCodeView" destination="GsA-8L-xpZ" id="rMK-wH-Du8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPS-JS-V43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

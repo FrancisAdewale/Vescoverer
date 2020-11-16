@@ -15,6 +15,8 @@ class FoundTableViewController: UITableViewController {
     let db = Firestore.firestore()
     var userArray = [[String:Any]]()
     
+    var userList = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
@@ -25,7 +27,8 @@ class FoundTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Array(userArray).count
+        //return Array(userArray).count
+        return userList.count
     }
 
     

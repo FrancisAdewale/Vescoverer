@@ -63,42 +63,53 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                 if let e = error {
                     print(e)
                 } else {
+                    let user = User(email: email, password: password, userCoordinate: self.location.coordinate)
                     
+                    self.db.collection("users").document(user.email).setData([
+                        "longitude": Double(user.userCoordinate!.longitude),
+                        "latitude": Double(user.userCoordinate!.latitude)
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
 
-                    
-                    var ref: DocumentReference? = nil
-                    ref = self.db.collection("users").addDocument(data: [
-                        "longitude": Double(self.location.coordinate.longitude),
-                        "latitude": Double(self.location.coordinate.latitude)
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-                        }
-                    }
-                    
-                    ref = self.db.collection("users").addDocument(data: [
-                        "longitude":-122.21108,
-                        "latitude": 37.620
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-                        }
-                    }
-                    
-                    ref = self.db.collection("users").addDocument(data: [
-                        "longitude": -122.20459,
-                        "latitude":37.500
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-                        }
-                    }
+//                    var ref: DocumentReference = user.email
+//                    ref = self.db.collection("users").addDocument(data: [
+//                        "longitude": Double(self.location.coordinate.longitude),
+//                        "latitude": Double(self.location.coordinate.latitude)
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error adding document: \(err)")
+//                        } else {
+//                            print("Document added with ID: \(ref!.documentID)")
+//                        }
+//                    }
+//
+//                    ref = self.db.collection("users").addDocument(data: [
+//                        "longitude":-122.21108,
+//                        "latitude": 37.620
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error adding document: \(err)")
+//                        } else {
+//                            print("Document added with ID: \(ref!.documentID)")
+//                        }
+//                    }
+//
+//                    ref = self.db.collection("users").addDocument(data: [
+//                        "longitude": -122.20459,
+//                        "latitude":37.500
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error adding document: \(err)")
+//                        } else {
+//                            print("Document added with ID: \(ref!.documentID)")
+//                            ref?.set
+//                        }
+//                    }
                     
                     self.present(dvc, animated: true, completion: nil)
 

@@ -5,10 +5,15 @@
 //  Created by Francis Adewale on 04/11/2020.
 //
 
-import Foundation
+import UIKit
+import CoreLocation
 
 struct User {
    
     var email: String
     var password: String
+    var userCoordinate: CLLocationCoordinate2D?
+    
+    
+    
 }

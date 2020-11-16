@@ -10,7 +10,8 @@ import Firebase
 import CoreData
 import CoreLocation
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     let db = Firestore.firestore()
@@ -18,7 +19,6 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField! //UIPICKER for age instead
     
     override func viewDidLoad() {
         super .viewDidLoad()
