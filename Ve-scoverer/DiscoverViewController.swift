@@ -50,7 +50,7 @@ class DiscoverViewController: UIViewController {
                 
                 for document in querySnapshot!.documents {
                     
-                    print(document.documentID)
+                    self.userEmail = document.documentID
                     let data = document.data()
                     let latitude = data["latitude"] as! Double
                     let longitude = data["longitude"] as! Double
@@ -123,16 +123,17 @@ extension DiscoverViewController: CLLocationManagerDelegate {
 
 extension DiscoverViewController: MKMapViewDelegate {
     
-
-        
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         let alert = UIAlertController(title: "View User", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            if let loc = view.annotation?.coordinate {
-                print("This is loc: \(loc)")
+            if let user = view.annotation?.title {
+                
+                self.db.collection("users").document(self.userEmail).collection("found").addDocument(data: ["userFound": user!])
+                
+                
+                   
             }
         }
         

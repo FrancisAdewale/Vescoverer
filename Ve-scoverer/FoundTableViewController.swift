@@ -15,7 +15,7 @@ class FoundTableViewController: UITableViewController {
     let db = Firestore.firestore()
     var userArray = [[String:Any]]()
     
-    var userList = [User]()
+    var userList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class FoundTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
-        let label = Array(userArray)[indexPath.row].description
+        let label = userList[indexPath.row]
         cell.textLabel?.text = label
         return cell
     }
@@ -53,10 +53,14 @@ class FoundTableViewController: UITableViewController {
                 
                 for document in querySnapshot!.documents {
                     
+                    print(document)
+                   
                     
-                    let data = document.data()
                     
-                    self.userArray.append(data)
+                    self.userList.append(document.documentID)
+                    
+                    
+                    //self.userArray.append(data)
                     
                     
 //                    let data = document.data()
