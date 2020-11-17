@@ -22,7 +22,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     @IBOutlet weak var uploadImage: UIButton!
     
+    @IBOutlet weak var tab: UITabBarItem!
     override func viewDidLoad() {
+        
+        view.backgroundColor = UIColor(hexString: "3797A4")
         
         load()
         

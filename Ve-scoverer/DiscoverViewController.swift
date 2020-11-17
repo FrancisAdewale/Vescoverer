@@ -26,6 +26,8 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         setStartingPosition()
         getGeoLocation()
     
@@ -130,8 +132,11 @@ extension DiscoverViewController: MKMapViewDelegate {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             if let user = view.annotation?.title {
                 
-                self.db.collection("users").document(self.userEmail).collection("found").addDocument(data: ["userFound": user!])
+                //self.db.collection("users").document(self.userEmail).collection("found").document("foundUsers").setData(["userFound": user!])
+
                 
+                self.db.collection("users").document(self.userEmail).collection("found").addDocument(data: ["userFound": user!])
+                    
                 
                    
             }

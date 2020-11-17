@@ -11,9 +11,16 @@ class DashboardTabController: UITabBarController {
     
     @IBOutlet weak var dashboardTab: UITabBar!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dashboardTab.barTintColor = UIColor(hexString: "3797A4")
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         title = "Ve-scoverer"
         

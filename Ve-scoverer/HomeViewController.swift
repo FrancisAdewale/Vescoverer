@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import CoreData
+import ChameleonFramework
+
 
 class HomeViewController: UIViewController {
     
@@ -19,10 +21,13 @@ class HomeViewController: UIViewController {
     let db = Firestore.firestore()
 
     
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var veganLabel: UILabel!
     @IBOutlet private weak var isVegan: UISwitch! // may need coredata
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dismiss(animated: false, completion: nil)
         load()
         
         let lvc = storyboard?.instantiateViewController(withIdentifier: "Login")
@@ -30,14 +35,22 @@ class HomeViewController: UIViewController {
         if !vegan.isEmpty {
             lvc!.modalPresentationStyle = .fullScreen
             present(lvc!, animated: true, completion: nil)
-        } 
+        }
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Ve-scoverer"
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")}
+
+        navBar.barTintColor = UIColor(hexString: "3797A4")
+        veganLabel.textColor = UIColor(hexString: "cee397")
+        isVegan.onTintColor = UIColor(hexString: "cee397")
         isVegan.isOn = false
+        
+       
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }

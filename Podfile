@@ -8,7 +8,7 @@ target 'Ve-scoverer' do
 
 pod 'Firebase/Auth'
 pod 'FirebaseFirestoreSwift'
-pod 'FasterVerificationCode'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 
 
 end

@@ -21,17 +21,34 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     private let locationManager = CLLocationManager()
 
         
+    @IBOutlet weak var loginLabel: UIButton!
+    @IBOutlet weak var registerLabel: UIBarButtonItem!
+    @IBOutlet weak var registerBar: UIToolbar!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         self.modalPresentationStyle = .fullScreen
+        view.backgroundColor = UIColor(hexString: "3797A4")
+        registerBar.barTintColor = UIColor(hexString: "3797A4")
+        registerLabel.tintColor = UIColor(hexString: "cee397")
+        navigationItem.hidesBackButton = true
+        loginLabel.tintColor = UIColor(hexString: "cee397")
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        load()
+    }
+    
+    
+    @IBAction func registerPressed(_ sender: UIBarButtonItem) {
+        
+        let rvc = storyboard?.instantiateViewController(identifier: "register") as! RegisterViewController
+        rvc.modalPresentationStyle = .fullScreen
+        present(rvc, animated: true, completion: nil)
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -76,41 +93,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
                         }
                     }
 
-//                    var ref: DocumentReference = user.email
-//                    ref = self.db.collection("users").addDocument(data: [
-//                        "longitude": Double(self.location.coordinate.longitude),
-//                        "latitude": Double(self.location.coordinate.latitude)
-//                    ]) { err in
-//                        if let err = err {
-//                            print("Error adding document: \(err)")
-//                        } else {
-//                            print("Document added with ID: \(ref!.documentID)")
-//                        }
-//                    }
-//
-//                    ref = self.db.collection("users").addDocument(data: [
-//                        "longitude":-122.21108,
-//                        "latitude": 37.620
-//                    ]) { err in
-//                        if let err = err {
-//                            print("Error adding document: \(err)")
-//                        } else {
-//                            print("Document added with ID: \(ref!.documentID)")
-//                        }
-//                    }
-//
-//                    ref = self.db.collection("users").addDocument(data: [
-//                        "longitude": -122.20459,
-//                        "latitude":37.500
-//                    ]) { err in
-//                        if let err = err {
-//                            print("Error adding document: \(err)")
-//                        } else {
-//                            print("Document added with ID: \(ref!.documentID)")
-//                            ref?.set
-//                        }
-//                    }
-                    
                     self.present(dvc, animated: true, completion: nil)
 
                 }
@@ -119,25 +101,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
         
     }
     
-//    func save() {
-//
-//        do {
-//            try context.save()
-//        } catch {
-//            print(error)
-//        }
-//    }
-//
-//    func load() {
-//
-//        let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
-//
-//        let request = try? context.fetch(fetchRequest)
-//
-//        userCordinates = request!
-//
-//
-//    }
+
 }
 
 

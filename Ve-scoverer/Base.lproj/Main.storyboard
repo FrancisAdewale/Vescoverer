@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ve-scoverer-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,36 +16,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-B9-bH1">
-                                <rect key="frame" x="33" y="139" width="251" height="176"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vescoverer" highlightedImage="vescoverer" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-B9-bH1">
+                                <rect key="frame" x="68" y="132" width="181" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SeK-TS-D71">
                                 <rect key="frame" x="249" y="386" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm you are vegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thh-Xx-Mvb">
-                                <rect key="frame" x="44" y="391" width="172" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5E-4P-hUE">
+                                <rect key="frame" x="124" y="461" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Jef-RC-BYH" kind="show" identifier="goToRegister" id="XHF-QB-tH1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vegan?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thh-Xx-Mvb">
+                                <rect key="frame" x="124" y="386" width="57" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5E-4P-hUE">
-                                <rect key="frame" x="124" y="461" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <segue destination="Jef-RC-BYH" kind="show" identifier="goToRegister" id="XHF-QB-tH1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.34658256170000001" green="0.65837472679999998" blue="0.77905899290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Ve-scoverer" id="CgZ-pJ-h6r"/>
+                    <navigationItem key="navigationItem" id="CgZ-pJ-h6r"/>
                     <connections>
+                        <outlet property="doneButton" destination="o5E-4P-hUE" id="eWa-CW-NTJ"/>
                         <outlet property="isVegan" destination="SeK-TS-D71" id="6l2-NH-h1L"/>
+                        <outlet property="veganLabel" destination="thh-Xx-Mvb" id="4lH-mx-mAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="138.75" y="75"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="avj-v1-XMH">
             <objects>
                 <viewController storyboardIdentifier="register" id="Jef-RC-BYH" customClass="RegisterViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,9 +119,12 @@
                         <viewLayoutGuide key="safeArea" id="3fz-X1-1fi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1uy-YO-CBX"/>
+                    <navigationItem key="navigationItem" title="Register" id="1uy-YO-CBX"/>
                     <connections>
+                        <outlet property="donePressed" destination="778-Q8-GSK" id="83k-0e-spy"/>
                         <outlet property="emailTextField" destination="sSE-gp-Wlm" id="3GK-Xg-oCG"/>
+                        <outlet property="goToLogin" destination="PNB-o0-Isr" id="38E-lb-ZYw"/>
+                        <outlet property="logInBar" destination="jJ7-vt-6ZS" id="iKM-ZA-B36"/>
                         <outlet property="passwordTextField" destination="weg-tO-LKA" id="EeE-Ua-5hJ"/>
                     </connections>
                 </viewController>
@@ -124,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="2364" y="-641"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="54p-0w-Xtw">
             <objects>
                 <viewController storyboardIdentifier="Login" id="mVs-Z4-dJZ" customClass="LoginViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
@@ -135,12 +143,16 @@
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="f@a.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1K-Bf-5tu">
                                 <rect key="frame" x="98" y="236" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Da13th_sun" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hl-EW-sca">
                                 <rect key="frame" x="98" y="301" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -152,14 +164,28 @@
                                     <action selector="userLogin:" destination="mVs-Z4-dJZ" eventType="touchUpInside" id="QGC-B3-CdW"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLf-6h-NM0">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Register" id="JMe-OR-ikR">
+                                        <connections>
+                                            <action selector="registerPressed:" destination="mVs-Z4-dJZ" id="C0y-qC-i8A"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ok3-1a-VmZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nzx-4f-6Ns"/>
+                    <navigationItem key="navigationItem" title="Login" id="nzx-4f-6Ns"/>
                     <connections>
                         <outlet property="emailTextField" destination="w1K-Bf-5tu" id="Vjz-4a-8BJ"/>
+                        <outlet property="loginLabel" destination="GsF-yX-7Yf" id="bYu-R8-csw"/>
                         <outlet property="passwordTextField" destination="1Hl-EW-sca" id="k4z-Tl-CZ0"/>
+                        <outlet property="registerBar" destination="gLf-6h-NM0" id="hny-tu-z3Y"/>
+                        <outlet property="registerLabel" destination="JMe-OR-ikR" id="twa-fT-2hH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoa-IF-zNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -253,9 +279,12 @@
                         <viewLayoutGuide key="safeArea" id="yyA-gv-Doq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="65g-A0-JIP"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="65g-A0-JIP">
+                        <color key="badgeColor" red="0.67938035730000002" green="0.73999959230000001" blue="0.52253413199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="isVerified" destination="sKc-oe-lqL" id="crg-i5-Ksb"/>
+                        <outlet property="tab" destination="65g-A0-JIP" id="GHO-T1-Bra"/>
                         <outlet property="uploadImage" destination="mSu-xI-Cfb" id="vdZ-TL-T1b"/>
                     </connections>
                 </viewController>
@@ -338,6 +367,7 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="placeholder" width="306" height="306"/>
         <image name="placeholder.jpg" width="146.8800048828125" height="146.8800048828125"/>
+        <image name="vescoverer" width="341" height="341"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

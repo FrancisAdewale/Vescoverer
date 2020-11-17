@@ -20,6 +20,7 @@ class FoundTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
+
     }
     
     // MARK: - Table view data source
@@ -46,51 +47,17 @@ class FoundTableViewController: UITableViewController {
     
     
     func load() {
+        
+        //self.db.collection("users").document(self.userEmail).collection("found").addDocument(data: ["userFound": user!])
+
         db.collection("users").getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 
                 for document in querySnapshot!.documents {
-                    
-                    print(document)
-                   
-                    
-                    
                     self.userList.append(document.documentID)
-                    
-                    
-                    //self.userArray.append(data)
-                    
-                    
-//                    let data = document.data()
-//
-//                    let latituide = data["latitude"] as? Double ?? 0
-//                    let longitude = data["longitude"] as? Double ?? 0
-//
-//                    self.found.append(latituide)
-                    
-//                    for _ in self.userArray {
-//                        let longitude = (self.userArray["longitude"] as! Double)
-//                        let latitude = (self.userArray["latitude"] as! Double)
-//
-//                        var coordinate = CLLocationCoordinate2D() //+37.76578140,-122.40755380
-//
-//                        coordinate.longitude = longitude
-//                        coordinate.latitude = latitude
-//
-////                                print(coordinate)
-//
-//
-//                        self.found?.append(coordinate)
-//
-//                    }
-//
-                    
                 }
-                print(self.userArray.count)
-
-                
                 self.tableView.reloadData()
 
             }

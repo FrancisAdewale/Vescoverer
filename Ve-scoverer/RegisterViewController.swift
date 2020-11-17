@@ -17,6 +17,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     let db = Firestore.firestore()
     
     
+    @IBOutlet weak var goToLogin: UIBarButtonItem!
+    @IBOutlet weak var donePressed: UIButton!
+    @IBOutlet weak var logInBar: UIToolbar!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -26,6 +29,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.hidesBackButton = true
+        view.backgroundColor = UIColor(hexString: "3797A4")
+        logInBar.barTintColor = UIColor(hexString: "3797A4")
+        donePressed.tintColor = UIColor(hexString: "cee397")
+        goToLogin.tintColor = UIColor(hexString: "cee397")
+        
+
+
+
     }
     
 
@@ -52,8 +63,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginPressed(_ sender: UIBarButtonItem) {
         
-        self.performSegue(withIdentifier: "goToLogin", sender: self)
-        
+        let lvc = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+        lvc.modalPresentationStyle = .fullScreen
+        present(lvc, animated: true, completion: nil)
     }
     
 }
