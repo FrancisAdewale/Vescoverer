@@ -19,6 +19,9 @@ class FoundTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(hexString: "3797A4")
+
         load()
 
     }
@@ -38,6 +41,9 @@ class FoundTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
         let label = userList[indexPath.row]
         cell.textLabel?.text = label
+        cell.backgroundColor = UIColor(hexString: "3797A4")
+        cell.textLabel?.textColor = UIColor(hexString: "cee397")
+
         return cell
     }
     
