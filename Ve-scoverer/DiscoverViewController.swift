@@ -20,7 +20,6 @@ class DiscoverViewController: UIViewController {
     var geoPoints = [GeoPoint]()
     var userEmail: String = ""
     
-    var annotation = MKPointAnnotation()
 
 
 
@@ -29,25 +28,25 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let user = Auth.auth().currentUser
-        
-        
-        db.collection("users").document((user?.email)!).collection("found").getDocuments { (querySnapshot, err) in
-
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-
-                for document in querySnapshot!.documents {
-
-                    let data = document.data()
-
-                    self.annotation.title = data["userFound"] as! String
-
-                }
-
-            }
-        }
+//        let user = Auth.auth().currentUser
+//
+//
+//        db.collection("users").document((user?.email)!).collection("found").getDocuments { (querySnapshot, err) in
+//
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//
+//                for document in querySnapshot!.documents {
+//
+//                    let data = document.data()
+//
+//                    self.annotation.title = data["userFound"] as! String
+//
+//                }
+//
+//            }
+//        }
         view.backgroundColor = UIColor(hexString: "8bcdcd")
         setStartingPosition()
         getLocations()
@@ -77,13 +76,15 @@ class DiscoverViewController: UIViewController {
                     let data = document.data()
                     let latitude = data["latitude"] as! Double
                     let longitude = data["longitude"] as! Double
+                        
+                    let annotation = MKPointAnnotation()
                     
-//                    self.annotation.title = document.documentID
+                   annotation.title = document.documentID
                     
                     
-                    self.annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    self.nearbyUsers.addAnnotation(self.annotation)
-                    self.annoationsArray.append(self.annotation)
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    self.nearbyUsers.addAnnotation(annotation)
+                    self.annoationsArray.append(annotation)
                     self.nearbyUsers.showAnnotations(self.annoationsArray, animated: true)
                     
                         }
@@ -153,8 +154,6 @@ extension DiscoverViewController: MKMapViewDelegate {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             if let user = view.annotation?.title {
                 
-                //self.db.collection("users").document(self.userEmail).collection("found").document("foundUsers").setData(["userFound": user!])
-
                 
                 self.db.collection("users").document(self.userEmail).collection("found")
                     .addDocument(data: ["userFound": user!,
@@ -162,10 +161,13 @@ extension DiscoverViewController: MKMapViewDelegate {
                                         "longitude": Double((view.annotation?.coordinate.latitude)!)
                                         
                     ])
-                    
                 
-                   
+                
+                
             }
+            
+            let fvc = self.storyboard?.instantiateViewController(identifier: "Found") as! FoundTableViewController
+            fvc.tableView.reloadData()
         }
         
         alert.addAction(action)
