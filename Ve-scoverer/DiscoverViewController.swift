@@ -14,7 +14,7 @@ class DiscoverViewController: UIViewController {
     //MARK: - Properties
     let startingLocation = CLLocation(latitude: 37.773972, longitude: -122.431297)
     private let locationManager = CLLocationManager()
-    let radius: CLLocationDistance = 1000
+    let radius: CLLocationDistance = 500
     var annoationsArray = [MKPointAnnotation]()
     let db = Firestore.firestore()
     var geoPoints = [GeoPoint]()

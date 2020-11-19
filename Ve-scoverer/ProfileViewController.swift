@@ -20,13 +20,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
 
     @IBOutlet weak var isVerified: UIImageView!
     
+    @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var uploadImage: UIButton!
     
     @IBOutlet weak var tab: UITabBarItem!
     override func viewDidLoad() {
         
         view.backgroundColor = UIColor(hexString: "3797A4")
-        
         load()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -55,6 +55,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         dismiss(animated: true, completion: nil)
     }
     
+    //i need to add social media lnks to USER MODEL.
     
     @IBAction func igButtonClick(_ sender: Any) {
         

@@ -25,6 +25,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        hideKeyboardWhenTappedAround()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +39,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
 
 
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 
