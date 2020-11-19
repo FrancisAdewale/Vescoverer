@@ -17,7 +17,9 @@ class VerifyViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(hexString: "3797A4")
+        progress.backgroundColor = UIColor(hexString: "3797a4")
+        
+        view.backgroundColor = UIColor(hexString: "8bcdcd")
         
         Auth.auth().currentUser?.sendEmailVerification
                 {
@@ -36,10 +38,9 @@ class VerifyViewController : UIViewController {
                                 self.progress.progress = 1.0
                                 self.label.text = "All Done!"
                                 self.viewWillAppear(true)
-
                                 
                             } else {
-                                //alert
+                                self.label.text = self.label.text
                             }
                         
                         }

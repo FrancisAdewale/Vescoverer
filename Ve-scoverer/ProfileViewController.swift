@@ -7,33 +7,52 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var editedInstagram = String()
     var editedTwitter = String()
     var editedFacebook = String()
-    
     let picker = UIImagePickerController()
+    
+    
 
     @IBOutlet weak var isVerified: UIImageView!
-    
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var uploadImage: UIButton!
-    
     @IBOutlet weak var tab: UITabBarItem!
-    override func viewDidLoad() {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let user = Auth.auth().currentUser
         
-        view.backgroundColor = UIColor(hexString: "3797A4")
+        if let user = user {
+            let verified = user.isEmailVerified
+            
+            if verified {
+                isVerified.image = UIImage(named: "verified")
+                
+            } else {
+//                self.label.text = self.label.text
+            }
+        
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(hexString: "8bcdcd")
         load()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        super.viewDidLoad()
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
+        
+        
+        
         
     }
     
