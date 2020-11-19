@@ -14,13 +14,9 @@ import ChameleonFramework
 class HomeViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var vegan: [UserCore] = []
-    
-    
     let db = Firestore.firestore()
 
-    
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var veganLabel: UILabel!
     @IBOutlet private weak var isVegan: UISwitch! // may need coredata
@@ -31,15 +27,11 @@ class HomeViewController: UIViewController {
         load()
         
         let lvc = storyboard?.instantiateViewController(withIdentifier: "Login")
-        
         if !vegan.isEmpty {
             lvc!.modalPresentationStyle = .fullScreen
             present(lvc!, animated: true, completion: nil)
         }
-        
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +41,6 @@ class HomeViewController: UIViewController {
         veganLabel.textColor = UIColor(hexString: "cee397")
         isVegan.onTintColor = UIColor(hexString: "cee397")
         isVegan.isOn = false
-        
-       
-        
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     

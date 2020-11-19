@@ -20,23 +20,6 @@ class FoundTableViewController: UITableViewController {
     let currentUser = Auth.auth().currentUser
     
     var loadUser = String()
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        db.collection("users").document(currentUser!.email!)
-                 .getDocument { (snapshot, error ) in
-
-                      if let document = snapshot {
-                        self.loadUser = document.documentID
-
-                       } else {
-
-                        print("Document does not exist")
-                      }
-              }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,27 +76,24 @@ class FoundTableViewController: UITableViewController {
 //        }
         
         
+
         let user = Auth.auth().currentUser
-        if let user = user {
-          // The user's ID, unique to the Firebase project.
-          // Do NOT use this value to authenticate with your backend server,
-          // if you have one. Use getTokenWithCompletion:completion: instead.
-          let uid = user.uid
-          let email = user.email
-            let found = user.isEmailVerified
-          var multiFactorString = "MultiFactor: "
-          for info in user.multiFactor.enrolledFactors {
-            multiFactorString += info.displayName ?? "[DispayName]"
-            multiFactorString += " "
-          }
-          // ...
+        
+        
+        db.collection("users").document((user?.email)!).collection("found").getDocuments { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    print(document.data())
+                    self.userList.append(document["userFound"] as! String)
+                }
+                self.tableView.reloadData()
+                
+            }
         }
-        
-       
-        
-        
-    
-        
     }
     //        db.collection("users").getDocuments() {(querySnapshot, err) in
 //            if let err = err {

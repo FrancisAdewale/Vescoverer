@@ -210,6 +210,22 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
     }
     
+    
+    @IBAction func logOutPressed(_ sender: UIButton) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let lvc = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+        lvc.modalPresentationStyle = .fullScreen
+        present(lvc, animated: true, completion: nil)
+    }
+    
+    
     func load() {
         let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
         
