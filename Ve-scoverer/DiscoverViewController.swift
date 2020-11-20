@@ -156,24 +156,21 @@ extension DiscoverViewController: MKMapViewDelegate {
                 
                 
                 self.db.collection("users").document(self.userEmail).collection("found").document(user!).setData(["userFound": user!,
-                                                                                                        "latitude": Double((view.annotation?.coordinate.longitude)!),                         "longitude": Double((view.annotation?.coordinate.latitude)!)
-                       
+                                                                                                                  "latitude": Double((view.annotation?.coordinate.longitude)!),                         "longitude": Double((view.annotation?.coordinate.latitude)!)
+                                                                                                                  
                 ])
-                
-    
-                
-                
                 
             }
             
-            let fvc = self.storyboard?.instantiateViewController(identifier: "Found") as! FoundTableViewController
-            fvc.tableView.reloadData()
         }
+        
+        
         
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
-                
+        
+        
     }
     
     
