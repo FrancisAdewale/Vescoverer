@@ -194,7 +194,7 @@
             </objects>
             <point key="canvasLocation" x="2363" y="510"/>
         </scene>
-        <!--Discover-->
+        <!--Vescover-->
         <scene sceneID="DPj-ba-NUF">
             <objects>
                 <viewController id="geu-5S-loU" customClass="DiscoverViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,11 +203,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="few-wb-5eq">
-                                <rect key="frame" x="0.0" y="59" width="320" height="329"/>
+                                <rect key="frame" x="0.0" y="59" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K8-h9-QR3">
-                                <rect key="frame" x="120" y="30" width="67" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vescover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K8-h9-QR3">
+                                <rect key="frame" x="120" y="30" width="71" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -217,7 +217,7 @@
                         <viewLayoutGuide key="safeArea" id="1xJ-qs-FrR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" image="location" catalog="system" selectedImage="location" id="Jyf-Ba-6uu"/>
+                    <tabBarItem key="tabBarItem" title="Vescover" image="location" catalog="system" selectedImage="location" id="Jyf-Ba-6uu"/>
                     <connections>
                         <outlet property="nearbyUsers" destination="few-wb-5eq" id="HhQ-F0-S8v"/>
                     </connections>
@@ -371,6 +371,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="sectionIndexColor" red="0.98823529409999999" green="0.97254901959999995" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableCell" id="G8v-F6-IoS">
                                 <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>

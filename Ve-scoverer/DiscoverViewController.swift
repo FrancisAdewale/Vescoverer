@@ -155,12 +155,12 @@ extension DiscoverViewController: MKMapViewDelegate {
             if let user = view.annotation?.title {
                 
                 
-                self.db.collection("users").document(self.userEmail).collection("found")
-                    .addDocument(data: ["userFound": user!,
-                                        "latitude": Double((view.annotation?.coordinate.longitude)!),
-                                        "longitude": Double((view.annotation?.coordinate.latitude)!)
-                                        
-                    ])
+                self.db.collection("users").document(self.userEmail).collection("found").document(user!).setData(["userFound": user!,
+                                                                                                        "latitude": Double((view.annotation?.coordinate.longitude)!),                         "longitude": Double((view.annotation?.coordinate.latitude)!)
+                       
+                ])
+                
+    
                 
                 
                 

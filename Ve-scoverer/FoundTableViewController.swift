@@ -24,6 +24,7 @@ class FoundTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hexString: "8bcdcd")
+        title = "Vescovered"
         load()
 
     }
@@ -50,9 +51,35 @@ class FoundTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Vescovered"
+        default:
+           return "Vescovered"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let user = Auth.auth().currentUser
+            db.collection("users").document((user?.email)!).collection("found").document().delete { (err) in
+            }
+            
+                    self.userList.remove(at: indexPath.row)
+            
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+
+                
+            }
+        tableView.reloadData()
+        }
+    
+
     
     func load() {
         
@@ -95,6 +122,7 @@ class FoundTableViewController: UITableViewController {
             }
         }
     }
+}
     //        db.collection("users").getDocuments() {(querySnapshot, err) in
 //            if let err = err {
 //                print("Error getting documents: \(err)")
@@ -107,6 +135,6 @@ class FoundTableViewController: UITableViewController {
 //                self.tableView.reloadData()
 //
 //            }
-        }
+        
     
  
