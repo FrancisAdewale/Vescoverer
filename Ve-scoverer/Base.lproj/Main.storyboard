@@ -234,13 +234,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57s-4s-wgl">
-                                <rect key="frame" x="134" y="37" width="49" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.9882352941176471" green="0.97254901960784312" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMR-Ok-BHu">
                                 <rect key="frame" x="35" y="387" width="62" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -262,7 +255,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-xI-Cfb">
                                 <rect key="frame" x="87" y="154" width="165" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="imageButton" image="placeholder" backgroundImage="placeholder.jpg"/>
+                                <state key="normal" title="imageButton" image="placeholder"/>
                                 <connections>
                                     <action selector="uploadImagePressed:" destination="emy-kP-vjH" eventType="touchUpInside" id="Zbw-Sa-wOc"/>
                                 </connections>
@@ -289,6 +282,13 @@
                                     <action selector="twitterButtonClicked:" destination="emy-kP-vjH" eventType="touchUpInside" id="kWt-hw-PrV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57s-4s-wgl">
+                                <rect key="frame" x="87" y="33" width="133" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.9882352941176471" green="0.97254901960784312" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yyA-gv-Doq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -402,7 +402,6 @@
         <image name="location" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="placeholder" width="306" height="306"/>
-        <image name="placeholder.jpg" width="146.8800048828125" height="146.8800048828125"/>
         <image name="twitter" width="300.5" height="300.5"/>
         <image name="vescoverer" width="341" height="341"/>
         <systemColor name="systemBackgroundColor">

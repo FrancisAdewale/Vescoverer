@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
@@ -16,7 +17,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     var editedTwitter = String()
     var editedFacebook = String()
     let picker = UIImagePickerController()
-    
+    let storage = Storage.storage()
     
 
     @IBOutlet weak var isVerified: UIImageView!
@@ -26,7 +27,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        load()
         let user = Auth.auth().currentUser
+        profileName.text = user?.email
+
         
         if let user = user {
             let verified = user.isEmailVerified
@@ -43,8 +47,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
         view.backgroundColor = UIColor(hexString: "8bcdcd")
-        load()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         picker.delegate = self
@@ -62,16 +67,42 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let userImage = info[.editedImage] as! UIImage
-        let pngImage = userImage.pngData()
-        let coreImage = Image(context: context)
-        coreImage.img = pngImage
+        let jpegImage = userImage.jpegData(compressionQuality: 1.0)
+            //.pngData()
+//        let coreImage = Image(context: context)
+//        coreImage.img = pngImage
+
+//        do {
+//            try! context.save()
+//        }
+
+        let storageRef = storage.reference()
+
         
-        do {
-            try! context.save()
-        } 
         
+        // Data in memory
+        var data = Data()
+        
+        let userImagesRef = storageRef.child("recents/userimage.jpg")
+        
+        data.append(jpegImage!)
+
+        _ = userImagesRef.putData(data, metadata: nil) { (metadata, error) in
+          guard let metadata = metadata else {
+                return
+          }
+            _ = metadata.size
+          userImagesRef.downloadURL { (url, error) in
+            guard url != nil else {
+              return
+            }
+          }
+        }
         uploadImage.setImage(userImage, for: .normal)
         dismiss(animated: true, completion: nil)
+
+            
+
     }
     
     //i need to add social media lnks to USER MODEL.
@@ -216,8 +247,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        } catch {
+            print ("Error signing out: \(error)")
         }
         
         let lvc = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
@@ -227,19 +258,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     
     func load() {
-        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
+        let storageRef = storage.reference()
         
-        do {
-            let result = try? context.fetch(fetchRequest)
-            let image = result?.first?.img
-            if let image = image {
-                let imageButton = UIImage(data: image)
-                uploadImage.setImage(imageButton, for: .normal)
-            }
-            
-        } catch {
+        let userImagesRef = storageRef.child("recents/userimage.jpg")
+        
+        userImagesRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if let error = error {
             print(error)
+          } else {
+            // Data for "images/island.jpg" is returned
+            let image = UIImage(data: data!)
+            
+                self.uploadImage.setImage(image, for: .normal)
+          
+
+          }
         }
+        
+//        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
+//
+//        do {
+//            let result = try? context.fetch(fetchRequest)
+//            let image = result?.first?.img
+//            if let image = image {
+//                let imageButton = UIImage(data: image)
+//                uploadImage.setImage(imageButton, for: .normal)
+//            }
+//
+//        } catch {
+//            print(error)
+//        }
     }
     
 }
