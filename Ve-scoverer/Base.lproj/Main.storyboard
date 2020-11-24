@@ -231,7 +231,7 @@
             <objects>
                 <viewController storyboardIdentifier="Profile" id="emy-kP-vjH" customClass="ProfileViewController" customModule="Ve_scoverer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gdQ-Wf-9wK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMR-Ok-BHu">
@@ -296,6 +296,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="65g-A0-JIP">
                         <color key="badgeColor" systemColor="systemPurpleColor"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="9pA-f4-Gr2"/>
                     <connections>
                         <outlet property="isVerified" destination="sKc-oe-lqL" id="crg-i5-Ksb"/>
                         <outlet property="profileName" destination="57s-4s-wgl" id="j5h-tR-1r6"/>
@@ -305,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPB-Qp-OZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4239.375" y="-367.6056338028169"/>
+            <point key="canvasLocation" x="5100" y="-377"/>
         </scene>
         <!--Verify-->
         <scene sceneID="QMW-4b-Qy1">
@@ -388,12 +389,18 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Vescovered" image="folder.fill" catalog="system" selectedImage="folder.fill" id="opb-lE-LFn"/>
+                    <connections>
+                        <segue destination="emy-kP-vjH" kind="show" identifier="goToProfile" id="wXL-vl-hIC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ez-0M-GO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4238" y="338"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wXL-vl-hIC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="facebook" width="400.5" height="400"/>

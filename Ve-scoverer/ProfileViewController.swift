@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseStorage
+import SDWebImage
+
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
@@ -18,6 +20,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     var editedFacebook = String()
     let picker = UIImagePickerController()
     let storage = Storage.storage()
+    var expectedString = ""
+
     
 
     @IBOutlet weak var isVerified: UIImageView!
@@ -27,9 +31,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
+        
+
         load()
         let user = Auth.auth().currentUser
-        profileName.text = user?.email
+        profileName.text = expectedString
 
         
         if let user = user {
@@ -69,30 +76,31 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         let userImage = info[.editedImage] as! UIImage
         let jpegImage = userImage.jpegData(compressionQuality: 1.0)
             //.pngData()
-//        let coreImage = Image(context: context)
-//        coreImage.img = pngImage
+        let coreImage = Image(context: context)
+        coreImage.img = jpegImage
 
-//        do {
-//            try! context.save()
-//        }
+        do {
+            try! context.save()
+       }
 
-        let storageRef = storage.reference()
+        let randomID = UUID.init().uuidString
+        let storageRef = storage.reference(withPath: "recents/\(randomID).jpg")
 
         
         
         // Data in memory
         var data = Data()
         
-        let userImagesRef = storageRef.child("recents/userimage.jpg")
+       // let userImagesRef = storageRef.child("recents/userimage.jpg")
         
         data.append(jpegImage!)
 
-        _ = userImagesRef.putData(data, metadata: nil) { (metadata, error) in
+        _ = storageRef.putData(data, metadata: nil) { (metadata, error) in
           guard let metadata = metadata else {
                 return
           }
             _ = metadata.size
-          userImagesRef.downloadURL { (url, error) in
+          storageRef.downloadURL { (url, error) in
             guard url != nil else {
               return
             }
@@ -258,19 +266,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     
     func load() {
-        let storageRef = storage.reference()
         
-        let userImagesRef = storageRef.child("recents/userimage.jpg")
-        
-        userImagesRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        let storageRef = storage.reference(withPath: "recents/FA5A7B21-EE49-4014-8644-11FC3E2B42B6.jpg")
+
+        //let userImagesRef = storageRef.child("recents/userimage.jpg")
+
+        storageRef.getData(maxSize: 4 * 1024 * 1024) { data, error in
           if let error = error {
             print(error)
           } else {
             // Data for "images/island.jpg" is returned
             let image = UIImage(data: data!)
-            
-                self.uploadImage.setImage(image, for: .normal)
-          
+
+            self.uploadImage.setImage(image, for: .normal)
+
 
           }
         }
@@ -284,7 +293,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
 //                let imageButton = UIImage(data: image)
 //                uploadImage.setImage(imageButton, for: .normal)
 //            }
-//
 //        } catch {
 //            print(error)
 //        }

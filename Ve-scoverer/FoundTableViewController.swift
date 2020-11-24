@@ -52,8 +52,23 @@ class FoundTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToProfile", sender: self)
+
         
-        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        guard let pvc = segue.destination as? ProfileViewController else { return }
+        let indexpath = tableView.indexPathForSelectedRow
+        
+        if let unwrappedPath = indexpath {
+            tableView.deselectRow(at: unwrappedPath, animated: true)
+            pvc.expectedString = userList[unwrappedPath.row]
+        }
+        
+        
     }
     
 
