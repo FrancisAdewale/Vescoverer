@@ -21,6 +21,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     let picker = UIImagePickerController()
     let storage = Storage.storage()
     var expectedString = ""
+    var expectedImage: UIImage? = nil
+    let user = Auth.auth().currentUser
+    let db = Firestore.firestore()
 
     
 
@@ -35,8 +38,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
 
         load()
-        let user = Auth.auth().currentUser
         profileName.text = expectedString
+        uploadImage.imageView?.image = expectedImage
 
         
         if let user = user {
@@ -76,36 +79,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         let userImage = info[.editedImage] as! UIImage
         let jpegImage = userImage.jpegData(compressionQuality: 1.0)
             //.pngData()
-        let coreImage = Image(context: context)
-        coreImage.img = jpegImage
-
-        do {
-            try! context.save()
-       }
-
-        let randomID = UUID.init().uuidString
-        let storageRef = storage.reference(withPath: "recents/\(randomID).jpg")
-
+//        let coreImage = Image(context: context)
+//        coreImage.img = jpegImage
+//
+//        do {
+//            try! context.save()
+//       }
         
-        
-        // Data in memory
-        var data = Data()
-        
-       // let userImagesRef = storageRef.child("recents/userimage.jpg")
-        
-        data.append(jpegImage!)
+        db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage])
 
-        _ = storageRef.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-                return
-          }
-            _ = metadata.size
-          storageRef.downloadURL { (url, error) in
-            guard url != nil else {
-              return
-            }
-          }
-        }
+
         uploadImage.setImage(userImage, for: .normal)
         dismiss(animated: true, completion: nil)
 
@@ -267,23 +250,27 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func load() {
         
-        let storageRef = storage.reference(withPath: "recents/FA5A7B21-EE49-4014-8644-11FC3E2B42B6.jpg")
+        db.collection("users").document((user?.email)!).collection("userimage").getDocuments { (querySnapshot, err) in
+            
+            if let error = err {
+                print(error)
+            }
+            
+            for document in querySnapshot!.documents {
+                
+                let data = document.data()
+                let image = UIImage(data: data["image"] as! Data)
+                
+                if let image = image {
+                    self.uploadImage.setImage(image, for: .normal)
+                }
+                
 
-        //let userImagesRef = storageRef.child("recents/userimage.jpg")
+            }
+            
+            
+            
 
-        storageRef.getData(maxSize: 4 * 1024 * 1024) { data, error in
-          if let error = error {
-            print(error)
-          } else {
-            // Data for "images/island.jpg" is returned
-            let image = UIImage(data: data!)
-
-            self.uploadImage.setImage(image, for: .normal)
-
-
-          }
-        }
-        
 //        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
 //
 //        do {
@@ -296,6 +283,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
 //        } catch {
 //            print(error)
 //        }
+        }
     }
     
 }

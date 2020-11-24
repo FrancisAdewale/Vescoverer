@@ -22,23 +22,23 @@ class FoundTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         load()
-
+        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hexString: "8bcdcd")
-
+        
     }
     
     // MARK: - Table view data source
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userList.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -47,13 +47,13 @@ class FoundTableViewController: UITableViewController {
         cell.textLabel?.text = label
         cell.backgroundColor = UIColor(hexString: "3797A4")
         cell.textLabel?.textColor = UIColor(hexString: "cee397")
-
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToProfile", sender: self)
-
+        
         
     }
     
@@ -66,13 +66,29 @@ class FoundTableViewController: UITableViewController {
         if let unwrappedPath = indexpath {
             tableView.deselectRow(at: unwrappedPath, animated: true)
             pvc.expectedString = userList[unwrappedPath.row]
+            
+            db.collection("users").document(pvc.expectedString).collection("userimage").getDocuments { (querySnapshot, err) in
+                
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        let image = UIImage(data: data["image"] as! Data)
+                        
+                        pvc.expectedImage = image
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+            }
         }
-        
-        
     }
-    
-
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let user = Auth.auth().currentUser
