@@ -38,8 +38,8 @@ class HomeViewController: UIViewController {
         guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")}
 
         navBar.barTintColor = UIColor(hexString: "3797A4")
-        veganLabel.textColor = UIColor(hexString: "cee397")
-        isVegan.onTintColor = UIColor(hexString: "cee397")
+        veganLabel.textColor = .white
+        isVegan.onTintColor = UIColor(hexString: "3797A4")
         isVegan.isOn = false
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }

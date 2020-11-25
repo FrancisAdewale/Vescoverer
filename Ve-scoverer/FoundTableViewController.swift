@@ -33,8 +33,6 @@ class FoundTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userList.count
     }
@@ -45,8 +43,9 @@ class FoundTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
         let label = userList[indexPath.row]
         cell.textLabel?.text = label
+        cell.textLabel?.font = UIFont(name: "Lato", size: 20.0)
         cell.backgroundColor = UIColor(hexString: "3797A4")
-        cell.textLabel?.textColor = UIColor(hexString: "cee397")
+        cell.textLabel?.textColor = .black
         
         return cell
     }
@@ -76,18 +75,19 @@ class FoundTableViewController: UITableViewController {
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         let image = UIImage(data: data["image"] as! Data)
-                        
                         pvc.expectedImage = image
-                        
+                        let user = try? Auth.auth().getStoredUser(forAccessGroup: pvc.expectedString)
+                        if user?.isEmailVerified == true {
+                            pvc.isUserVerified = true
+                        } else {
+                            pvc.isUserVerified = false
+                        }
                     }
-                    
-                    
-                    
                 }
-                
-                
             }
         }
+        pvc.expectedBool = true
+        pvc.buttonIsEnabled = false
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

@@ -31,9 +31,9 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = UIColor(hexString: "3797A4")
         registerBar.barTintColor = UIColor(hexString: "3797A4")
-        registerLabel.tintColor = UIColor(hexString: "cee397")
+        registerLabel.tintColor = .white
         navigationItem.hidesBackButton = true
-        loginLabel.tintColor = UIColor(hexString: "cee397")
+        loginLabel.tintColor = .white
 
     }
     

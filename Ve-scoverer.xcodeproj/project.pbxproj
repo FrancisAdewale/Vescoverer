@@ -17,6 +17,7 @@
 		763EFF9B2554558900CEAA41 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF9A2554558900CEAA41 /* DiscoverViewController.swift */; };
 		763EFFA22554573D00CEAA41 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFFA12554573D00CEAA41 /* VerifyViewController.swift */; };
 		763EFFA5255457C000CEAA41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFFA4255457C000CEAA41 /* ProfileViewController.swift */; };
+		767EAE53256EB1C600B67811 /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 767EAE52256EB1C600B67811 /* Lato */; };
 		76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5C2551DB1B001C38DE /* AppDelegate.swift */; };
 		76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B5E2551DB1B001C38DE /* SceneDelegate.swift */; };
 		76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B602551DB1B001C38DE /* HomeViewController.swift */; };
@@ -37,6 +38,7 @@
 		763EFF9A2554558900CEAA41 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		763EFFA12554573D00CEAA41 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		763EFFA4255457C000CEAA41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		767EAE52256EB1C600B67811 /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lato; sourceTree = "<group>"; };
 		76912B592551DB1B001C38DE /* Ve-scoverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ve-scoverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76912B5C2551DB1B001C38DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76912B5E2551DB1B001C38DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		767EAE51256EB1AC00B67811 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				767EAE52256EB1C600B67811 /* Lato */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		76912B502551DB1B001C38DE = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		76912B5B2551DB1B001C38DE /* Ve-scoverer */ = {
 			isa = PBXGroup;
 			children = (
+				767EAE51256EB1AC00B67811 /* fonts */,
 				76912B5C2551DB1B001C38DE /* AppDelegate.swift */,
 				763EFF8C2552EE4200CEAA41 /* User.swift */,
 				76912B5E2551DB1B001C38DE /* SceneDelegate.swift */,
@@ -183,6 +194,7 @@
 				763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */,
 				76912B692551DB1B001C38DE /* LaunchScreen.storyboard in Resources */,
 				76912B662551DB1B001C38DE /* Assets.xcassets in Resources */,
+				767EAE53256EB1C600B67811 /* Lato in Resources */,
 				76912B642551DB1B001C38DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

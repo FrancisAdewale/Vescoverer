@@ -33,8 +33,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         navigationItem.hidesBackButton = true
         view.backgroundColor = UIColor(hexString: "3797A4")
         logInBar.barTintColor = UIColor(hexString: "3797A4")
-        donePressed.tintColor = UIColor(hexString: "cee397")
-        goToLogin.tintColor = UIColor(hexString: "cee397")
+        donePressed.tintColor = .white
+        goToLogin.tintColor = .white
         
 
 

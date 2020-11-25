@@ -17,16 +17,21 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedInstagram = String()
     var editedTwitter = String()
-    var editedFacebook = String()
     let picker = UIImagePickerController()
     let storage = Storage.storage()
     var expectedString = ""
     var expectedImage: UIImage? = nil
+    var buttonIsEnabled = true
+    var expectedBool = Bool()
+    var isUserVerified = Bool()
     let user = Auth.auth().currentUser
     let db = Firestore.firestore()
 
     
 
+    @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var igButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var isVerified: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var uploadImage: UIButton!
@@ -34,12 +39,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-        
 
         load()
-        profileName.text = expectedString
-        uploadImage.imageView?.image = expectedImage
+
+        
+        
 
         
         if let user = user {
@@ -57,17 +61,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         view.backgroundColor = UIColor(hexString: "8bcdcd")
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
-        
-        
-        
         
     }
     
@@ -86,10 +85,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
 //            try! context.save()
 //       }
         
-        db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage])
+        db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage as Any])
 
 
-        uploadImage.setImage(userImage, for: .normal)
+        uploadImage.setImage(UIImage(data: jpegImage!), for: .normal)
         dismiss(animated: true, completion: nil)
 
             
@@ -119,10 +118,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit your @", message: "only your account name(not including @)", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Edit", style: .default) { (action) in
                 self.editedInstagram = textField.text!
+                
+                self.db.collection("users").document((self.user?.email!)!).collection("socials").document("instagram").setData(["insta@": self.editedInstagram])
+                    
                 
             }
             alert.addTextField { (alertTextField) in
@@ -164,11 +166,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit your @", message: "only your account name(not including @)", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Edit", style: .default) { (action) in
                 self.editedTwitter = textField.text!
                 
+                self.db.collection("users").document((self.user?.email!)!).collection("socials").document("twitter").setData(["twitter@": self.editedTwitter])
+
+                
             }
             alert.addTextField { (alertTextField) in
                 textField = alertTextField
@@ -187,50 +192,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     }
     
-    @IBAction func fbButtonClick(_ sender: Any) {
-        
-        var textField = UITextField()
-        
-        let actionsheet = UIAlertController(title: "Select", message: "", preferredStyle: .actionSheet)
-        
-        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
-            
-            let appURL = URL(string: "fb://profile/\(self.editedFacebook)")!
-            let application = UIApplication.shared
-            
-            if application.canOpenURL(appURL) {
-                application.open(appURL)
-            }else{
-                let webURL = URL(string: "https://www.facebook.com/\(self.editedFacebook)")!
-                application.open(webURL)
-            }
-            
-         
-        }
-        
-        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
-            
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Edit", style: .default) { (action) in
-                self.editedFacebook = textField.text!
-                
-            }
-            alert.addTextField { (alertTextField) in
-                textField = alertTextField
-                
-            }
-            alert.addAction(action)
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        actionsheet.addAction(goAction)
-        actionsheet.addAction(editAction)
-        
-        present(actionsheet, animated: true, completion: nil)
-        
-    }
     
     
     @IBAction func logOutPressed(_ sender: UIButton) {
@@ -250,26 +211,35 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func load() {
         
-        db.collection("users").document((user?.email)!).collection("userimage").getDocuments { (querySnapshot, err) in
-            
-            if let error = err {
-                print(error)
-            }
-            
-            for document in querySnapshot!.documents {
-                
-                let data = document.data()
-                let image = UIImage(data: data["image"] as! Data)
-                
-                if let image = image {
-                    self.uploadImage.setImage(image, for: .normal)
-                }
-                
+        profileName.text = expectedString
+        uploadImage.imageView?.image = expectedImage
+        logOutButton.isHidden = expectedBool
+        igButton.isEnabled = buttonIsEnabled
+        twitterButton.isEnabled = buttonIsEnabled
+        
+        if isUserVerified == false {
+            isVerified.image = nil
+        }
 
-            }
+//        db.collection("users").document((user?.email)!).collection("userimage").getDocuments { (querySnapshot, err) in
+//
+//            if let error = err {
+//                print(error)
+//            }
+//
+//            for document in querySnapshot!.documents {
+//
+//                let data = document.data()
+//                let image = UIImage(data: data["image"] as! Data)
+//
+//                if let image = image {
+//                    self.uploadImage.setImage(image, for: .normal)
+//                }
+//
+//
+//            }
             
-            
-            
+
 
 //        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
 //
@@ -279,11 +249,40 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
 //            if let image = image {
 //                let imageButton = UIImage(data: image)
 //                uploadImage.setImage(imageButton, for: .normal)
-//            }
-//        } catch {
-//            print(error)
-//        }
+            //            }
+            //        } catch {
+            //            print(error)
+            //        }
+        //}
+        db.collection("users").document((user?.email)!).collection("socials").document("instagram").getDocument(completion: { (documentSnap, err) in
+            if let err = err {
+                print(err.localizedDescription)
+            }
+            
+            for document in documentSnap!.data()! {
+                
+                self.editedInstagram = document.value as! String
+                
+            }
+            
+        })
+        
+        db.collection("users").document((user?.email)!).collection("socials").document("twitter").getDocument(completion: { (documentSnap, err) in
+            if let err = err {
+                print(err.localizedDescription)
+            }
+            
+            for document in documentSnap!.data()! {
+                
+                
+                self.editedTwitter = document.value as! String
+                
+            }
+        })
+                  
         }
-    }
+
+    
+    
     
 }

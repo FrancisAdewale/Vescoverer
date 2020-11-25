@@ -10,15 +10,16 @@ import UIKit
 class DashboardTabController: UITabBarController {
     
     @IBOutlet weak var dashboardTab: UITabBar!
-    let unselectedColor = UIColor(hexString: "fcf876")
+    let unselectedColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dashboardTab.barTintColor = UIColor(hexString: "8bcdcd")
+        dashboardTab.barTintColor = .white
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: unselectedColor!], for: .normal)
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: unselectedColor], for: .normal)
 
 
     }
