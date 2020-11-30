@@ -27,8 +27,19 @@
 		76912B762551E400001C38DE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B752551E400001C38DE /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		761B44D12574E75B005F6E29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 761B44BC2574E756005F6E29;
+			remoteInfo = MyButton;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ve_scoverer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyButton.xcodeproj; path = "../../Exercism/objective-c/bob/MyButton/MyButton.xcodeproj"; sourceTree = "<group>"; };
 		762503202555D8DB002F92E2 /* FoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundTableViewController.swift; sourceTree = "<group>"; };
 		7625033B25570169002F92E2 /* UserCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCore.xcdatamodel; sourceTree = "<group>"; };
 		763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -81,6 +92,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		761B44CE2574E75A005F6E29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				761B44D22574E75B005F6E29 /* MyButton.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		767EAE51256EB1AC00B67811 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +129,7 @@
 		76912B5B2551DB1B001C38DE /* Ve-scoverer */ = {
 			isa = PBXGroup;
 			children = (
+				761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */,
 				767EAE51256EB1AC00B67811 /* fonts */,
 				76912B5C2551DB1B001C38DE /* AppDelegate.swift */,
 				763EFF8C2552EE4200CEAA41 /* User.swift */,
@@ -144,6 +164,7 @@
 				76912B562551DB1B001C38DE /* Frameworks */,
 				76912B572551DB1B001C38DE /* Resources */,
 				30B80B0F328758045E21C59A /* [CP] Embed Pods Frameworks */,
+				484489FE02C37E33E24F01BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,12 +200,28 @@
 			mainGroup = 76912B502551DB1B001C38DE;
 			productRefGroup = 76912B5A2551DB1B001C38DE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 761B44CE2574E75A005F6E29 /* Products */;
+					ProjectRef = 761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				76912B582551DB1B001C38DE /* Ve-scoverer */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		761B44D22574E75B005F6E29 /* MyButton.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MyButton.app;
+			remoteRef = 761B44D12574E75B005F6E29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		76912B572551DB1B001C38DE /* Resources */ = {
@@ -217,6 +254,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		484489FE02C37E33E24F01BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EB3887DE06FD82A1663FE24F /* [CP] Check Pods Manifest.lock */ = {

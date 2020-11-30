@@ -42,6 +42,8 @@ class HomeViewController: UIViewController {
         isVegan.onTintColor = UIColor(hexString: "3797A4")
         isVegan.isOn = false
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+
     }
     
     

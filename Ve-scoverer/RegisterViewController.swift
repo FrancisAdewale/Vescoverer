@@ -35,9 +35,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         logInBar.barTintColor = UIColor(hexString: "3797A4")
         donePressed.tintColor = .white
         goToLogin.tintColor = .white
-        
-
-
 
     }
     

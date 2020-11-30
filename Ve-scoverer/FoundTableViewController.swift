@@ -71,17 +71,19 @@ class FoundTableViewController: UITableViewController {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    
                     for document in querySnapshot!.documents {
                         let data = document.data()
-                        let image = UIImage(data: data["image"] as! Data)
-                        pvc.expectedImage = image
-                        let user = try? Auth.auth().getStoredUser(forAccessGroup: pvc.expectedString)
-                        if user?.isEmailVerified == true {
-                            pvc.isUserVerified = true
-                        } else {
-                            pvc.isUserVerified = false
+                       // let image = UIImage(data: data["image"] as! Data)
+                        pvc.expectedImage = UIImage(named: "placeholder")!
+                        do {
+                        let users = try? Auth.auth().getStoredUser(forAccessGroup: "users")
+                            if users?.email == pvc.expectedString && users!.isEmailVerified == true {
+                                pvc.isUserVerified = true
+                            }
+                        } catch {
+                            print(error)
                         }
+                
                     }
                 }
             }
@@ -98,8 +100,6 @@ class FoundTableViewController: UITableViewController {
             }
         }
     
-    
-
     func load() {
         
         let user = Auth.auth().currentUser

@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     let picker = UIImagePickerController()
     let storage = Storage.storage()
     var expectedString = ""
-    var expectedImage: UIImage? = nil
+    var expectedImage = UIImage()
     var buttonIsEnabled = true
     var expectedBool = Bool()
     var isUserVerified = Bool()
@@ -39,12 +39,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
 
         load()
-
-        
-        
-
         
         if let user = user {
             let verified = user.isEmailVerified
@@ -78,14 +75,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         let userImage = info[.editedImage] as! UIImage
         let jpegImage = userImage.jpegData(compressionQuality: 1.0)
             //.pngData()
-//        let coreImage = Image(context: context)
-//        coreImage.img = jpegImage
-//
-//        do {
-//            try! context.save()
-//       }
+        let coreImage = Image(context: context)
+        coreImage.img = jpegImage
+
+        do {
+            try! context.save()
+       }
         
-        db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage as Any])
+       // db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage as Any])
 
 
         uploadImage.setImage(UIImage(data: jpegImage!), for: .normal)
@@ -216,68 +213,54 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         logOutButton.isHidden = expectedBool
         igButton.isEnabled = buttonIsEnabled
         twitterButton.isEnabled = buttonIsEnabled
+
+        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
+
+        do {
+            let result = try? context.fetch(fetchRequest)
+            let image = result?.first?.img
+            if let image = image {
+                let imageButton = UIImage(data: image)
+                uploadImage.setImage(imageButton, for: .normal)
+                        }
+                    } catch {
+                        print(error)
+                    }
         
-        if isUserVerified == false {
-            isVerified.image = nil
-        }
-
-//        db.collection("users").document((user?.email)!).collection("userimage").getDocuments { (querySnapshot, err) in
-//
-//            if let error = err {
-//                print(error)
-//            }
-//
-//            for document in querySnapshot!.documents {
-//
-//                let data = document.data()
-//                let image = UIImage(data: data["image"] as! Data)
-//
-//                if let image = image {
-//                    self.uploadImage.setImage(image, for: .normal)
-//                }
-//
-//
-//            }
-            
-
-
-//        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
-//
-//        do {
-//            let result = try? context.fetch(fetchRequest)
-//            let image = result?.first?.img
-//            if let image = image {
-//                let imageButton = UIImage(data: image)
-//                uploadImage.setImage(imageButton, for: .normal)
-            //            }
-            //        } catch {
-            //            print(error)
-            //        }
-        //}
-        db.collection("users").document((user?.email)!).collection("socials").document("instagram").getDocument(completion: { (documentSnap, err) in
+        db.collection("users").document(user?.email ?? "Email").collection("socials").document("instagram").getDocument(completion: { (documentSnap, err) in
             if let err = err {
                 print(err.localizedDescription)
             }
             
-            for document in documentSnap!.data()! {
-                
-                self.editedInstagram = document.value as! String
-                
+            if let data = documentSnap?.data() {
+                for document in data {
+                    
+                    self.editedInstagram = document.value as! String
+                    
+                }
+            
             }
+            
+            
+           
             
         })
         
-        db.collection("users").document((user?.email)!).collection("socials").document("twitter").getDocument(completion: { (documentSnap, err) in
+        db.collection("users").document(user?.email ?? "Email").collection("socials").document("twitter").getDocument(completion: { (documentSnap, err) in
             if let err = err {
                 print(err.localizedDescription)
             }
             
-            for document in documentSnap!.data()! {
-                
-                
-                self.editedTwitter = document.value as! String
-                
+            
+            if let data = documentSnap?.data() {
+                for document in data {
+                    
+                    self.editedTwitter = document.value as! String
+
+                }
+            
             }
+            
         })
                   
         }
