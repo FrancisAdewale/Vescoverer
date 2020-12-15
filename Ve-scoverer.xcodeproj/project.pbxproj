@@ -164,7 +164,6 @@
 				76912B562551DB1B001C38DE /* Frameworks */,
 				76912B572551DB1B001C38DE /* Resources */,
 				30B80B0F328758045E21C59A /* [CP] Embed Pods Frameworks */,
-				484489FE02C37E33E24F01BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,23 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		484489FE02C37E33E24F01BB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EB3887DE06FD82A1663FE24F /* [CP] Check Pods Manifest.lock */ = {

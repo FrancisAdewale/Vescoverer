@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseStorage
-import SDWebImage
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {

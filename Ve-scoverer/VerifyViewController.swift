@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-
+//could change to a calander to schedule meetups. minimum of 6 people more females than male.
 class VerifyViewController : UIViewController {
     
     @IBOutlet weak var progress: UIProgressView!

@@ -10,9 +10,7 @@ pod 'Firebase/Auth'
 pod 'FirebaseFirestoreSwift'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 pod 'Firebase/Storage'
-pod 'SDWebImage', '~> 5.0'
-pod 'GoogleSignIn'
-
+pod 'SwiftEntryKit', '1.2.6'
 
 
 end

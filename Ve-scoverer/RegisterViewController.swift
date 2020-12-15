@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import CoreData
 import CoreLocation
+import SwiftEntryKit
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,6 +27,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super .viewDidLoad()
         hideKeyboardWhenTappedAround()
+        
 
     }
     
@@ -35,7 +37,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         logInBar.barTintColor = UIColor(hexString: "3797A4")
         donePressed.tintColor = .white
         goToLogin.tintColor = .white
-
+        
+        
+        
     }
     
     func hideKeyboardWhenTappedAround() {

@@ -17,9 +17,12 @@ class HomeViewController: UIViewController {
     var vegan: [UserCore] = []
     let db = Firestore.firestore()
 
+    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var veganLabel: UILabel!
     @IBOutlet private weak var isVegan: UISwitch! // may need coredata
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,9 +44,38 @@ class HomeViewController: UIViewController {
         veganLabel.textColor = .white
         isVegan.onTintColor = UIColor(hexString: "3797A4")
         isVegan.isOn = false
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
 
+        if !isVegan.isOn {
+            doneButton.addTarget(self, action: #selector(animate), for: .touchUpInside)
+        }
+       
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+
+    }
+    
+    @objc func animate() {
+        
+        logo.animationImages = animatedImages(for: "false")
+        logo.animationDuration = 0.2
+        logo.animationRepeatCount = 4
+        logo.image = logo.animationImages?.first
+        logo.startAnimating()
+        logo.image = UIImage(named: "false/0")
+
+    }
+    
+    
+    func animatedImages(for name: String) -> [UIImage] {
+        var i = 0
+        var images = [UIImage]()
+        
+        while let image = UIImage(named: "\(name)/\(i)") {
+            images.append(image)
+            i += 1
+        }
+        
+        return images
     }
     
     
@@ -55,6 +87,7 @@ class HomeViewController: UIViewController {
             userEntity.vegan = isVegan.isOn
             vegan.append(userEntity)
             save()
+            
             return true
         }
         return false

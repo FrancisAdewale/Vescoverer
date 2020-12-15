@@ -62,9 +62,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="CgZ-pJ-h6r"/>
                     <connections>
-                        <outlet property="doneButton" destination="o5E-4P-hUE" id="eWa-CW-NTJ"/>
-                        <outlet property="isVegan" destination="SeK-TS-D71" id="6l2-NH-h1L"/>
-                        <outlet property="veganLabel" destination="thh-Xx-Mvb" id="4lH-mx-mAt"/>
+                        <outlet property="doneButton" destination="o5E-4P-hUE" id="pbe-9C-uUC"/>
+                        <outlet property="isVegan" destination="SeK-TS-D71" id="D7v-n1-Yaz"/>
+                        <outlet property="logo" destination="MAE-B9-bH1" id="W2u-Om-0fh"/>
+                        <outlet property="veganLabel" destination="thh-Xx-Mvb" id="WHX-e5-13i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
