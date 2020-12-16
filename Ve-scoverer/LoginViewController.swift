@@ -33,8 +33,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     override func viewWillAppear(_ animated: Bool) {
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = UIColor(hexString: "3797A4")
-        registerBar.barTintColor = UIColor(hexString: "3797A4")
-        registerLabel.tintColor = .white
         navigationItem.hidesBackButton = true
         loginLabel.tintColor = .white
 
@@ -45,6 +43,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
         self.setupSOAppleSignIn()
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        
 
         // Automatically sign in the user.
 
@@ -59,7 +58,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
              btnAuthorization.center = self.view.center
     
              btnAuthorization.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-    
+                
              self.view.addSubview(btnAuthorization)
     
          }

@@ -48,6 +48,8 @@ class HomeViewController: UIViewController {
 
         if !isVegan.isOn {
             doneButton.addTarget(self, action: #selector(animate), for: .touchUpInside)
+        } else {
+            performSegue(withIdentifier: "goToLogin", sender: self)
         }
        
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
