@@ -9,14 +9,15 @@ import UIKit
 import Firebase
 import CoreLocation
 import CoreData
+import AuthenticationServices
+
 
 class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let db = Firestore.firestore()
-
-    
+    let btnAuthorization = ASAuthorizationAppleIDButton()
     var location = CLLocation()
     private let locationManager = CLLocationManager()
 
@@ -39,10 +40,36 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setupSOAppleSignIn()
+
         hideKeyboardWhenTappedAround()
 
     }
+    
+        func setupSOAppleSignIn() {
+    
+             btnAuthorization.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+    
+             btnAuthorization.center = self.view.center
+    
+             btnAuthorization.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+    
+             self.view.addSubview(btnAuthorization)
+    
+         }
+    
+    
+        @objc
+        func handleAuthorizationAppleIDButtonPress() {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+    
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        }
     
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -117,3 +144,31 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
 }
 
 
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+                case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                    let userIdentifier = appleIDCredential.user
+
+                    let defaults = UserDefaults.standard
+                    defaults.set(userIdentifier, forKey: "userIdentifier1")
+                    print(userIdentifier)
+
+                    var appleId = userIdentifier
+
+                   // self.present(UINavigationController(rootViewController: vc), animated: true)
+                    break
+                default:
+                    break
+                }
+    }
+
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+
+
+}

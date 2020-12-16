@@ -59,6 +59,7 @@
 		76912B682551DB1B001C38DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76912B6A2551DB1B001C38DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76912B752551E400001C38DE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		76BAC638258A2A7A0031A3EB /* Ve-scoverer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ve-scoverer.entitlements"; sourceTree = "<group>"; };
 		8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.debug.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.debug.xcconfig"; sourceTree = "<group>"; };
 		F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.release.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +130,7 @@
 		76912B5B2551DB1B001C38DE /* Ve-scoverer */ = {
 			isa = PBXGroup;
 			children = (
+				76BAC638258A2A7A0031A3EB /* Ve-scoverer.entitlements */,
 				761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */,
 				767EAE51256EB1AC00B67811 /* fonts */,
 				76912B5C2551DB1B001C38DE /* AppDelegate.swift */,
@@ -443,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ve-scoverer/Ve-scoverer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88XF5QGDBG;
 				INFOPLIST_FILE = "Ve-scoverer/Info.plist";
@@ -464,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ve-scoverer/Ve-scoverer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88XF5QGDBG;
 				INFOPLIST_FILE = "Ve-scoverer/Info.plist";
