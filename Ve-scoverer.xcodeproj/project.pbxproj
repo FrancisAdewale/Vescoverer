@@ -10,7 +10,6 @@
 		261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */; };
 		762503212555D8DB002F92E2 /* FoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762503202555D8DB002F92E2 /* FoundTableViewController.swift */; };
 		7625033C25570169002F92E2 /* UserCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7625033A25570169002F92E2 /* UserCore.xcdatamodeld */; };
-		763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */; };
 		763EFF8D2552EE4200CEAA41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8C2552EE4200CEAA41 /* User.swift */; };
 		763EFF9025530CD700CEAA41 /* DashboardTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8F25530CD700CEAA41 /* DashboardTabController.swift */; };
 		763EFF94255311CE00CEAA41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF93255311CE00CEAA41 /* LoginViewController.swift */; };
@@ -25,6 +24,13 @@
 		76912B662551DB1B001C38DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76912B652551DB1B001C38DE /* Assets.xcassets */; };
 		76912B692551DB1B001C38DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76912B672551DB1B001C38DE /* LaunchScreen.storyboard */; };
 		76912B762551E400001C38DE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76912B752551E400001C38DE /* RegisterViewController.swift */; };
+		76BAC65F258A7A830031A3EB /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC65E258A7A830031A3EB /* GoogleSignIn.framework */; };
+		76BAC662258A7A930031A3EB /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC661258A7A930031A3EB /* GoogleSignInDependencies.framework */; };
+		76BAC664258A7BC20031A3EB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC663258A7BC20031A3EB /* LocalAuthentication.framework */; };
+		76BAC666258A7BD10031A3EB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC665258A7BD10031A3EB /* SafariServices.framework */; };
+		76BAC668258A7BDE0031A3EB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC667258A7BDE0031A3EB /* AuthenticationServices.framework */; };
+		76BAC66A258A7BE60031A3EB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BAC669258A7BE60031A3EB /* SystemConfiguration.framework */; };
+		76BAC66E258A7EA70031A3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,13 @@
 		76912B6A2551DB1B001C38DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76912B752551E400001C38DE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		76BAC638258A2A7A0031A3EB /* Ve-scoverer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ve-scoverer.entitlements"; sourceTree = "<group>"; };
+		76BAC65B258A7A730031A3EB /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		76BAC65E258A7A830031A3EB /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		76BAC661258A7A930031A3EB /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		76BAC663258A7BC20031A3EB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		76BAC665258A7BD10031A3EB /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		76BAC667258A7BDE0031A3EB /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		76BAC669258A7BE60031A3EB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.debug.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.debug.xcconfig"; sourceTree = "<group>"; };
 		F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.release.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +82,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76BAC668258A7BDE0031A3EB /* AuthenticationServices.framework in Frameworks */,
+				76BAC66A258A7BE60031A3EB /* SystemConfiguration.framework in Frameworks */,
+				76BAC664258A7BC20031A3EB /* LocalAuthentication.framework in Frameworks */,
+				76BAC662258A7A930031A3EB /* GoogleSignInDependencies.framework in Frameworks */,
 				261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */,
+				76BAC65F258A7A830031A3EB /* GoogleSignIn.framework in Frameworks */,
+				76BAC666258A7BD10031A3EB /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +98,10 @@
 		01B790A68FC7AF795E674182 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76BAC669258A7BE60031A3EB /* SystemConfiguration.framework */,
+				76BAC667258A7BDE0031A3EB /* AuthenticationServices.framework */,
+				76BAC665258A7BD10031A3EB /* SafariServices.framework */,
+				76BAC663258A7BC20031A3EB /* LocalAuthentication.framework */,
 				5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */,
 			);
 			name = Frameworks;
@@ -149,6 +172,9 @@
 				763EFFA12554573D00CEAA41 /* VerifyViewController.swift */,
 				763EFFA4255457C000CEAA41 /* ProfileViewController.swift */,
 				762503202555D8DB002F92E2 /* FoundTableViewController.swift */,
+				76BAC661258A7A930031A3EB /* GoogleSignInDependencies.framework */,
+				76BAC65E258A7A830031A3EB /* GoogleSignIn.framework */,
+				76BAC65B258A7A730031A3EB /* GoogleSignIn.bundle */,
 				7625033A25570169002F92E2 /* UserCore.xcdatamodeld */,
 			);
 			path = "Ve-scoverer";
@@ -166,6 +192,7 @@
 				76912B562551DB1B001C38DE /* Frameworks */,
 				76912B572551DB1B001C38DE /* Resources */,
 				30B80B0F328758045E21C59A /* [CP] Embed Pods Frameworks */,
+				7B19C64228A8E8D1E9667550 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,7 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				763EFF8A2552EC3600CEAA41 /* GoogleService-Info.plist in Resources */,
+				76BAC66E258A7EA70031A3EB /* GoogleService-Info.plist in Resources */,
 				76912B692551DB1B001C38DE /* LaunchScreen.storyboard in Resources */,
 				76912B662551DB1B001C38DE /* Assets.xcassets in Resources */,
 				767EAE53256EB1C600B67811 /* Lato in Resources */,
@@ -255,6 +282,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B19C64228A8E8D1E9667550 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EB3887DE06FD82A1663FE24F /* [CP] Check Pods Manifest.lock */ = {
@@ -448,6 +492,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Ve-scoverer/Ve-scoverer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88XF5QGDBG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ve-scoverer",
+				);
 				INFOPLIST_FILE = "Ve-scoverer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,6 +518,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Ve-scoverer/Ve-scoverer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88XF5QGDBG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ve-scoverer",
+				);
 				INFOPLIST_FILE = "Ve-scoverer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

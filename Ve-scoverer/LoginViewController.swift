@@ -10,6 +10,7 @@ import Firebase
 import CoreLocation
 import CoreData
 import AuthenticationServices
+import GoogleSignIn
 
 
 class LoginViewController: UIViewController, CLLocationManagerDelegate  {
@@ -20,6 +21,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     let btnAuthorization = ASAuthorizationAppleIDButton()
     var location = CLLocation()
     private let locationManager = CLLocationManager()
+
 
         
     @IBOutlet weak var loginLabel: UIButton!
@@ -41,6 +43,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupSOAppleSignIn()
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
+        // Automatically sign in the user.
 
         hideKeyboardWhenTappedAround()
 
