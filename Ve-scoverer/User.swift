@@ -11,7 +11,6 @@ import CoreLocation
 struct User {
    
     var email: String
-    var password: String
     var userCoordinate: CLLocationCoordinate2D?
     
     
