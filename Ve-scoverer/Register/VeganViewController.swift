@@ -40,5 +40,13 @@ class VeganViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return 50.0
     }
     
-
+    @IBAction func next(_ sender: Any) {
+        let nvc = storyboard?.instantiateViewController(withIdentifier: "Name") as! NameViewController
+        
+        nvc.modalPresentationStyle = .overFullScreen
+        
+        present(nvc, animated: false, completion: nil)
+        
+    }
+    
 }

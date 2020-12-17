@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignI
     let btnAuthorization = ASAuthorizationAppleIDButton()
     var location = CLLocation()
     private let locationManager = CLLocationManager()
+    var firstName = ""
 
 
         
@@ -157,6 +158,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignI
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
+            
+            let user = user.profile
+            firstName = (user?.givenName)!
+            print(firstName)
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vVc = storyboard.instantiateViewController(withIdentifier: "Vegan") as! VeganViewController
             vVc.modalPresentationStyle = .overFullScreen
