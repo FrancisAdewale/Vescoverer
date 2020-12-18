@@ -15,14 +15,31 @@ class NameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lvc = storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
         
-        firstNameTextField.text = lvc.firstName
-        
+        hideKeyboardWhenTappedAround()
 
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 
 
-
+    @IBAction func next(_ sender: Any) {
+        
+        let avc = storyboard?.instantiateViewController(withIdentifier: "Age") as! AgeViewController
+        
+        avc.modalPresentationStyle = .overFullScreen
+        
+        present(avc, animated: false, completion: nil)
+        
+    }
+    
 }

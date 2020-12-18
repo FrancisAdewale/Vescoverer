@@ -34,6 +34,7 @@
 		76EAC834258B9D7600615A9F /* VeganViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAC833258B9D7600615A9F /* VeganViewController.swift */; };
 		76EAC838258BC76400615A9F /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAC837258BC76400615A9F /* NameViewController.swift */; };
 		76EAC83B258BCE8500615A9F /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAC83A258BCE8500615A9F /* AgeViewController.swift */; };
+		76EAC83E258CD9B500615A9F /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAC83D258CD9B500615A9F /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		76EAC833258B9D7600615A9F /* VeganViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganViewController.swift; sourceTree = "<group>"; };
 		76EAC837258BC76400615A9F /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		76EAC83A258BCE8500615A9F /* AgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeViewController.swift; sourceTree = "<group>"; };
+		76EAC83D258CD9B500615A9F /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		8A6F67F00767E389B6D529C1 /* Pods-Ve-scoverer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.debug.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.debug.xcconfig"; sourceTree = "<group>"; };
 		F9D0C6F224B814B83095557C /* Pods-Ve-scoverer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ve-scoverer.release.xcconfig"; path = "Target Support Files/Pods-Ve-scoverer/Pods-Ve-scoverer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				76EAC833258B9D7600615A9F /* VeganViewController.swift */,
 				76EAC837258BC76400615A9F /* NameViewController.swift */,
 				76EAC83A258BCE8500615A9F /* AgeViewController.swift */,
+				76EAC83D258CD9B500615A9F /* GenderViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				76912B612551DB1B001C38DE /* HomeViewController.swift in Sources */,
 				763EFFA22554573D00CEAA41 /* VerifyViewController.swift in Sources */,
 				76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */,
+				76EAC83E258CD9B500615A9F /* GenderViewController.swift in Sources */,
 				76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */,
 				76EAC838258BC76400615A9F /* NameViewController.swift in Sources */,
 				763EFFA5255457C000CEAA41 /* ProfileViewController.swift in Sources */,

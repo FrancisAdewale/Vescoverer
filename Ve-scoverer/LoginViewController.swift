@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignI
         
         // Automatically sign in the user.
 
-        hideKeyboardWhenTappedAround()
+//        hideKeyboardWhenTappedAround()
 
     }
 
@@ -82,15 +82,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignI
             authorizationController.performRequests()
         }
     
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
     
 //    @IBAction func registerPressed(_ sender: UIBarButtonItem) {
@@ -161,7 +161,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignI
             
             let user = user.profile
             firstName = (user?.givenName)!
-            print(firstName)
+            print("I am \(firstName)")
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vVc = storyboard.instantiateViewController(withIdentifier: "Vegan") as! VeganViewController
