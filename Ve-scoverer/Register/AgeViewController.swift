@@ -59,4 +59,13 @@ class AgeViewController: UIViewController {
         
     }
     
+    @IBAction func next(_ sender: UIButton) {
+        
+        let gvc = storyboard?.instantiateViewController(withIdentifier: "Gender") as! GenderViewController
+        
+        gvc.modalPresentationStyle = .overFullScreen
+        
+        present(gvc, animated: false, completion: nil)
+        
+    }
 }

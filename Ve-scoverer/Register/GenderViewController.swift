@@ -11,7 +11,8 @@ class GenderViewController: UIViewController,  UIPickerViewDataSource, UIPickerV
     
     @IBOutlet weak var genderPicker: UIPickerView!
     
-    let gender = ["male","female","transgender"]
+    @IBOutlet weak var genderLabel: UILabel!
+    let gender = ["Male","Female","Transgender"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class GenderViewController: UIViewController,  UIPickerViewDataSource, UIPickerV
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -30,10 +31,22 @@ class GenderViewController: UIViewController,  UIPickerViewDataSource, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        genderLabel.text = gender[row]
         return gender[row]
+
+        
     }
     
 
- 
-
+    @IBAction func next(_ sender: UIButton) {
+        
+        let uvc = storyboard?.instantiateViewController(withIdentifier: "Upload") as! UploadViewController
+        
+        uvc.modalPresentationStyle = .overFullScreen
+        
+        present(uvc, animated: false, completion: nil)
+    }
+    
+    
 }

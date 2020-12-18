@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		261A50C52DBAA16C2E84EF47 /* Pods_Ve_scoverer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */; };
+		761CBC18258D343D003136FB /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CBC17258D343D003136FB /* UploadViewController.swift */; };
+		761CBC1C258D3CD7003136FB /* SocialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CBC1B258D3CD7003136FB /* SocialsViewController.swift */; };
 		762503212555D8DB002F92E2 /* FoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762503202555D8DB002F92E2 /* FoundTableViewController.swift */; };
 		7625033C25570169002F92E2 /* UserCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7625033A25570169002F92E2 /* UserCore.xcdatamodeld */; };
 		763EFF8D2552EE4200CEAA41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EFF8C2552EE4200CEAA41 /* User.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		5662CB65AC2CCD879E168FB8 /* Pods_Ve_scoverer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ve_scoverer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761B44CD2574E75A005F6E29 /* MyButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyButton.xcodeproj; path = "../../Exercism/objective-c/bob/MyButton/MyButton.xcodeproj"; sourceTree = "<group>"; };
+		761CBC17258D343D003136FB /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		761CBC1B258D3CD7003136FB /* SocialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsViewController.swift; sourceTree = "<group>"; };
 		762503202555D8DB002F92E2 /* FoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundTableViewController.swift; sourceTree = "<group>"; };
 		7625033B25570169002F92E2 /* UserCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCore.xcdatamodel; sourceTree = "<group>"; };
 		763EFF892552EC3600CEAA41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				76EAC837258BC76400615A9F /* NameViewController.swift */,
 				76EAC83A258BCE8500615A9F /* AgeViewController.swift */,
 				76EAC83D258CD9B500615A9F /* GenderViewController.swift */,
+				761CBC17258D343D003136FB /* UploadViewController.swift */,
+				761CBC1B258D3CD7003136FB /* SocialsViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76EAC834258B9D7600615A9F /* VeganViewController.swift in Sources */,
+				761CBC18258D343D003136FB /* UploadViewController.swift in Sources */,
 				762503212555D8DB002F92E2 /* FoundTableViewController.swift in Sources */,
 				76EAC83B258BCE8500615A9F /* AgeViewController.swift in Sources */,
 				7625033C25570169002F92E2 /* UserCore.xcdatamodeld in Sources */,
@@ -360,6 +367,7 @@
 				763EFFA22554573D00CEAA41 /* VerifyViewController.swift in Sources */,
 				76912B5D2551DB1B001C38DE /* AppDelegate.swift in Sources */,
 				76EAC83E258CD9B500615A9F /* GenderViewController.swift in Sources */,
+				761CBC1C258D3CD7003136FB /* SocialsViewController.swift in Sources */,
 				76912B5F2551DB1B001C38DE /* SceneDelegate.swift in Sources */,
 				76EAC838258BC76400615A9F /* NameViewController.swift in Sources */,
 				763EFFA5255457C000CEAA41 /* ProfileViewController.swift in Sources */,
