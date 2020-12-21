@@ -9,59 +9,104 @@ import UIKit
 import Firebase
 import CoreLocation
 import CoreData
+import AuthenticationServices
+import GoogleSignIn
+import RealmSwift
 
-class LoginViewController: UIViewController, CLLocationManagerDelegate  {
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    let db = Firestore.firestore()
 
+class LoginViewController: UIViewController, CLLocationManagerDelegate, GIDSignInDelegate {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate)
+    
+    
+    var normalUser = NormalUser()
+    let realm = try! Realm()
+
+//    let db = Firestore.firestore()
+    let btnAuthorization = ASAuthorizationAppleIDButton()
     var location = CLLocation()
     private let locationManager = CLLocationManager()
+    var firstName = ""
+    var secondName = ""
+    var emailId = ""
+    var userlocation = CLLocationCoordinate2D()
+
 
         
-    @IBOutlet weak var loginLabel: UIButton!
-    @IBOutlet weak var registerLabel: UIBarButtonItem!
-    @IBOutlet weak var registerBar: UIToolbar!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+//    @IBOutlet weak var loginLabel: UIButton!
+//    @IBOutlet weak var registerLabel: UIBarButtonItem!
+//    @IBOutlet weak var registerBar: UIToolbar!
+//    @IBOutlet weak var emailTextField: UITextField!
+//    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = UIColor(hexString: "3797A4")
-        registerBar.barTintColor = UIColor(hexString: "3797A4")
-        registerLabel.tintColor = UIColor(hexString: "cee397")
         navigationItem.hidesBackButton = true
-        loginLabel.tintColor = UIColor(hexString: "cee397")
+//        loginLabel.tintColor = .white
+        
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupSOAppleSignIn()
         
-        hideKeyboardWhenTappedAround()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        
+        // Automatically sign in the user.
+
+//        hideKeyboardWhenTappedAround()
 
     }
+
     
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
+
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+        func setupSOAppleSignIn() {
+    
+             btnAuthorization.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+    
+             btnAuthorization.center = self.view.center
+    
+             btnAuthorization.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+                
+             self.view.addSubview(btnAuthorization)
+    
+         }
     
     
-    @IBAction func registerPressed(_ sender: UIBarButtonItem) {
-        
-        let rvc = storyboard?.instantiateViewController(identifier: "register") as! RegisterViewController
-        rvc.modalPresentationStyle = .fullScreen
-        present(rvc, animated: true, completion: nil)
-        
-    }
+        @objc
+        func handleAuthorizationAppleIDButtonPress() {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+    
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        }
+    
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+    
+    
+//    @IBAction func registerPressed(_ sender: UIBarButtonItem) {
+//
+//        let rvc = storyboard?.instantiateViewController(identifier: "register") as! RegisterViewController
+//        rvc.modalPresentationStyle = .fullScreen
+//        present(rvc, animated: true, completion: nil)
+//
+//    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
@@ -72,48 +117,137 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
         print(error.localizedDescription)
     }
     
-    @IBAction func userLogin(_ sender: UIButton) {
+    
+//    @IBAction func userLogin(_ sender: UIButton) {
+//
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
+//
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+//            locationManager.startUpdatingLocation()
+//        }
+//
+//        let dvc =  self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardTabController
+//        dvc.modalPresentationStyle = .fullScreen
+//
+//        if let email = emailTextField.text, let password = passwordTextField.text {
+//
+//            Auth.auth().signIn(withEmail: email, password: password) { (authresult, error) in
+//                if let e = error {
+//                    print(e)
+//                } else {
+//                    let user = User(email: email, password: password, userCoordinate: self.location.coordinate)
+//
+//                    self.db.collection("users").document(user.email).setData([
+//                        "longitude": Double(user.userCoordinate!.longitude),
+//                        "latitude": Double(user.userCoordinate!.latitude)
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error writing document: \(err)")
+//                        } else {
+//                            print("Document successfully written!")
+//                        }
+//                    }
+//
+//                    self.present(dvc, animated: true, completion: nil)
+//
+//                }
+//            }
+//        }
+//
+//    }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+          withError error: Error!) {
         
         locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
+                locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyReduced
-            locationManager.startUpdatingLocation()
-        }
-        
-        let dvc =  self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardTabController
-        dvc.modalPresentationStyle = .fullScreen
-        
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            
-            Auth.auth().signIn(withEmail: email, password: password) { (authresult, error) in
-                if let e = error {
-                    print(e)
-                } else {
-                    let user = User(email: email, password: password, userCoordinate: self.location.coordinate)
-                    
-                    self.db.collection("users").document(user.email).setData([
-                        "longitude": Double(user.userCoordinate!.longitude),
-                        "latitude": Double(user.userCoordinate!.latitude)
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Document successfully written!")
-                        }
-                    }
-
-                    self.present(dvc, animated: true, completion: nil)
-
+                if CLLocationManager.locationServicesEnabled() {
+                    locationManager.delegate = self
+                    locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+                    locationManager.startUpdatingLocation()
                 }
-            }
-        }
         
+        
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            
+            let user = user.profile
+            firstName = (user?.givenName)!
+            secondName = (user?.familyName)!
+            emailId = (user?.email)!
+            userlocation = self.location.coordinate
+            
+            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nvc = storyboard.instantiateViewController(withIdentifier: "Name") as! NameViewController
+            
+            nvc.usersid = emailId
+            
+            let realmUser = RealmUser()
+            
+            normalUser.firstName = firstName
+            normalUser.lastName = secondName
+            
+            normalUser.id = emailId
+            
+            
+            normalUser.longitude = userlocation.longitude
+            normalUser.latitude = userlocation.latitude
+            
+//            do {//commit changes to realm db
+//                try realm.write{
+//                    realm.add(realmUser)
+//                }
+//            } catch {
+//                print("Error \(error)")
+//            }
+
+            
+             storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vVc = storyboard.instantiateViewController(withIdentifier: "Vegan") as! VeganViewController
+            vVc.modalPresentationStyle = .overFullScreen
+            self.present(vVc, animated: false, completion: nil)
+        }
     }
+
     
 
 }
+
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+                case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                    let userIdentifier = appleIDCredential.user
+
+                    let defaults = UserDefaults.standard
+                    defaults.set(userIdentifier, forKey: "userIdentifier1")
+                    print(userIdentifier)
+
+                    var appleId = userIdentifier
+
+                   // self.present(UINavigationController(rootViewController: vc), animated: true)
+                    break
+                default:
+                    break
+                }
+    }
+
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+
+
+}
+
 
 

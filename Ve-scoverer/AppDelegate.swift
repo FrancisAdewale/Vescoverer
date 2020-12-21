@@ -8,17 +8,28 @@
 import UIKit
 import Firebase
 import CoreData
+import GoogleSignIn
+import RealmSwift
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+    
+    var signedIn = false
         
-        let db = Firestore.firestore()
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+//        do {
+//             let realm = try Realm()
+//        } catch {
+//            print("Error \(error)")
+//        }
+        
+//        FirebaseApp.configure()
+        
+//        let db = Firestore.firestore()
+        
+        GIDSignIn.sharedInstance().clientID = "452250904688-duk6irc1fadc7l6suokch7d2aifor27n.apps.googleusercontent.com"
 
                 
         return true
@@ -37,6 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
+    }
+    
+    
+    
+    
 
     // MARK: - Core Data stack
 
@@ -83,5 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
+    
+ 
 
+
+
+}

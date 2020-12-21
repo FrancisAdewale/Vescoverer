@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseStorage
-import SDWebImage
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -17,13 +16,21 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var editedInstagram = String()
     var editedTwitter = String()
-    var editedFacebook = String()
     let picker = UIImagePickerController()
-    let storage = Storage.storage()
+//    let storage = Storage.storage()
     var expectedString = ""
+    var expectedImage = UIImage()
+    var buttonIsEnabled = true
+    var expectedBool = Bool()
+    var isUserVerified = Bool()
+    let user = Auth.auth().currentUser
+//    let db = Firestore.firestore()
 
     
 
+    @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var igButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var isVerified: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var uploadImage: UIButton!
@@ -32,12 +39,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        
 
         load()
-        let user = Auth.auth().currentUser
-        profileName.text = expectedString
-
         
         if let user = user {
             let verified = user.isEmailVerified
@@ -54,17 +57,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         view.backgroundColor = UIColor(hexString: "8bcdcd")
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
-        
-        
-        
         
     }
     
@@ -82,31 +80,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         do {
             try! context.save()
        }
+        
+       // db.collection("users").document((user?.email!)!).collection("userimage").document("image").setData(["image": jpegImage as Any])
 
-        let randomID = UUID.init().uuidString
-        let storageRef = storage.reference(withPath: "recents/\(randomID).jpg")
 
-        
-        
-        // Data in memory
-        var data = Data()
-        
-       // let userImagesRef = storageRef.child("recents/userimage.jpg")
-        
-        data.append(jpegImage!)
-
-        _ = storageRef.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-                return
-          }
-            _ = metadata.size
-          storageRef.downloadURL { (url, error) in
-            guard url != nil else {
-              return
-            }
-          }
-        }
-        uploadImage.setImage(userImage, for: .normal)
+        uploadImage.setImage(UIImage(data: jpegImage!), for: .normal)
         dismiss(animated: true, completion: nil)
 
             
@@ -136,10 +114,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit your @", message: "only your account name(not including @)", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Edit", style: .default) { (action) in
                 self.editedInstagram = textField.text!
+                
+//                self.db.collection("users").document((self.user?.email!)!).collection("socials").document("instagram").setData(["insta@": self.editedInstagram])
+                    
                 
             }
             alert.addTextField { (alertTextField) in
@@ -181,10 +162,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit your @", message: "only your account name(not including @)", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Edit", style: .default) { (action) in
                 self.editedTwitter = textField.text!
+//
+//                self.db.collection("users").document((self.user?.email!)!).collection("socials").document("twitter").setData(["twitter@": self.editedTwitter])
+
                 
             }
             alert.addTextField { (alertTextField) in
@@ -204,50 +188,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     }
     
-    @IBAction func fbButtonClick(_ sender: Any) {
-        
-        var textField = UITextField()
-        
-        let actionsheet = UIAlertController(title: "Select", message: "", preferredStyle: .actionSheet)
-        
-        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
-            
-            let appURL = URL(string: "fb://profile/\(self.editedFacebook)")!
-            let application = UIApplication.shared
-            
-            if application.canOpenURL(appURL) {
-                application.open(appURL)
-            }else{
-                let webURL = URL(string: "https://www.facebook.com/\(self.editedFacebook)")!
-                application.open(webURL)
-            }
-            
-         
-        }
-        
-        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
-            
-            let alert = UIAlertController(title: "Edit your @", message: "only the suffix", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Edit", style: .default) { (action) in
-                self.editedFacebook = textField.text!
-                
-            }
-            alert.addTextField { (alertTextField) in
-                textField = alertTextField
-                
-            }
-            alert.addAction(action)
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        actionsheet.addAction(goAction)
-        actionsheet.addAction(editAction)
-        
-        present(actionsheet, animated: true, completion: nil)
-        
-    }
     
     
     @IBAction func logOutPressed(_ sender: UIButton) {
@@ -267,35 +207,64 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func load() {
         
-        let storageRef = storage.reference(withPath: "recents/FA5A7B21-EE49-4014-8644-11FC3E2B42B6.jpg")
+        profileName.text = expectedString
+        uploadImage.imageView?.image = expectedImage
+        logOutButton.isHidden = expectedBool
+        igButton.isEnabled = buttonIsEnabled
+        twitterButton.isEnabled = buttonIsEnabled
 
-        //let userImagesRef = storageRef.child("recents/userimage.jpg")
+        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
 
-        storageRef.getData(maxSize: 4 * 1024 * 1024) { data, error in
-          if let error = error {
-            print(error)
-          } else {
-            // Data for "images/island.jpg" is returned
-            let image = UIImage(data: data!)
-
-            self.uploadImage.setImage(image, for: .normal)
-
-
-          }
-        }
-        
-//        let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
+        do {
+            let result = try? context.fetch(fetchRequest)
+            let image = result?.first?.img
+            if let image = image {
+                let imageButton = UIImage(data: image)
+                uploadImage.setImage(imageButton, for: .normal)
+                        }
+                    } catch {
+                        print(error)
+                    }
 //
-//        do {
-//            let result = try? context.fetch(fetchRequest)
-//            let image = result?.first?.img
-//            if let image = image {
-//                let imageButton = UIImage(data: image)
-//                uploadImage.setImage(imageButton, for: .normal)
+//        db.collection("users").document(user?.email ?? "Email").collection("socials").document("instagram").getDocument(completion: { (documentSnap, err) in
+//            if let err = err {
+//                print(err.localizedDescription)
 //            }
-//        } catch {
-//            print(error)
-//        }
-    }
+//
+//            if let data = documentSnap?.data() {
+//                for document in data {
+//
+//                    self.editedInstagram = document.value as! String
+//
+//                }
+//
+//            }
+            
+            
+           
+            
+//        })
+        
+//        db.collection("users").document(user?.email ?? "Email").collection("socials").document("twitter").getDocument(completion: { (documentSnap, err) in
+//            if let err = err {
+//                print(err.localizedDescription)
+//            }
+//
+//
+//            if let data = documentSnap?.data() {
+//                for document in data {
+//
+//                    self.editedTwitter = document.value as! String
+//
+//                }
+//
+//            }
+//
+//        })
+                  
+        }
+
+    
+    
     
 }

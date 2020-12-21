@@ -8,11 +8,12 @@
 import UIKit
 import Firebase
 
-
+//could change to a calander to schedule meetups. minimum of 6 people more females than male.
 class VerifyViewController : UIViewController {
     
     @IBOutlet weak var progress: UIProgressView!
     
+    @IBOutlet weak var verifiedImage: UIImageView!
     @IBOutlet weak var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class VerifyViewController : UIViewController {
             if user.isEmailVerified {
                 self.progress.progress = 1.0
                 self.label.text = "All Done!"
+                verifiedImage.image = UIImage(systemName: "checkmark")
+                
                 self.viewWillAppear(true)
             } else {
                 Auth.auth().currentUser?.sendEmailVerification

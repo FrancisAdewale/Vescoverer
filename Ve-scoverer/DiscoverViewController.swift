@@ -157,7 +157,7 @@ extension DiscoverViewController: MKMapViewDelegate {
                 
                 self.db.collection("users").document(self.userEmail).collection("found").document(user!).setData(["userFound": user!,
                                                                                                                   "latitude": Double((view.annotation?.coordinate.longitude)!),                         "longitude": Double((view.annotation?.coordinate.latitude)!)
-                                                                                                                  
+                                                                                            
                 ])
                 
             }
